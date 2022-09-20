@@ -15,12 +15,15 @@ downloads/
 eggs/
 .eggs/
 lib64/
+Lib/
 parts/
 sdist/
 var/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
+./Environments
+
 *.egg-info/
 .installed.cfg
 *.egg
@@ -126,3 +129,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Environment/*
