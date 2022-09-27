@@ -7,7 +7,7 @@ import time
 
 notion_url = 'https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query'
 config     = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
-json_data  = DotMap(json.load(open('json_object', encoding='utf-8')))
+# json_data  = DotMap(json.load(open('json_object', encoding='utf-8')))
 
 def set_header(notion_version):
     header = {
