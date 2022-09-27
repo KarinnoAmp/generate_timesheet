@@ -2,7 +2,7 @@
 *version 0.1A*
 ## Release note
 ### New feature & improvement
-- Generate excel of notion timesheet
+- Generate excel of notion timesheet data
 - Add more user id to config file
 - Add color to progress bar
 - Add http error message while send requests was failed
