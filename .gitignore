@@ -134,3 +134,5 @@ Environment/*
 
 # Export file
 .report_excel.xlsx
+report_excel.xlsx
+export_data.json
