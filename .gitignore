@@ -136,3 +136,5 @@ Environment/*
 .report_excel.xlsx
 report_excel.xlsx
 export_data.json
+response_data.json
+BoardGame.py
