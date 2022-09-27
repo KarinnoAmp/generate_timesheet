@@ -32,7 +32,7 @@ class GenerateExcel:
         for item in data['items']:
             person_name: str = item['person']
             person_task: list = item['data']
-            person_total: str = item['total']
+            person_total: str = item['total_work_hours']
             
             headers: list = list(REPORT_HEADER.keys())
             dataframe: list = []
@@ -96,6 +96,6 @@ class GenerateExcel:
             sf = sf.set_column_width(columns=[header], width=REPORT_HEADER[header])
             
     
-generater = GenerateExcel()
-dict_data = generater.get_dict_data_from_jsonfile('./export_data.json')
-generater.write_excel(dict_data)
+generator = GenerateExcel()
+dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
+generator.write_excel(dict_data)
