@@ -131,3 +131,6 @@ dmypy.json
 .pyre/
 Environment/*
 .vscode/settings.json
+
+# Ignore output file
+.result.json
