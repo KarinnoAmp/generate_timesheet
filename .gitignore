@@ -132,5 +132,5 @@ dmypy.json
 Environment/*
 .vscode/settings.json
 
-# Ignore output file
-.result.json
+# Export file
+.report_excel.xlsx
