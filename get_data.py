@@ -8,7 +8,6 @@ import json
 
 notion_url = 'https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query'
 config     = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
-os_name    = str(os.name)
 # json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
 
 def round_number(number: numbers, decimal: int=0):
@@ -85,8 +84,8 @@ def set_body(start_date, end_date, person_key: str, last_page=None):
 def send_request(url: str ,headers: object ,json_data: object):
     response = requests.post(url=url, headers=headers, json=json_data)
     if int(response.status_code) != 200:
-        print('\033[91m' + 'HTTP error status ' + str(response.status_code)) # Red color
-        print('\033[91m' + str(response.json()['code'])) # Red color
+        print('\033[91m' + '\n' + 'HTTP error status ' + str(response.status_code)) # Red color
+        print('\033[91m' + 'message: ' + str(response.json()['code'])) # Red color
         exit()
     # json_object = json.dumps(response.json(), indent=4)
     # with open("response_data.json", "w") as outfile:
@@ -124,9 +123,8 @@ def get_tasks_content(json, person_name):
                 status = None
         # Check tasks Project
             if len(json[y].results[i].properties.Project.multi_select) > 1:
-                project = ''
                 for x in range(len(json[y].results[i].properties.Project.multi_select)):
-                    if x == 0:
+                    if x < 1:
                         project = str(json[y].results[i].properties.Project.multi_select[x].name)
                     else:
                         project = str(project) + ', ' + str(json[y].results[i].properties.Project.multi_select[x].name)
@@ -155,7 +153,7 @@ def get_tasks_content(json, person_name):
 
 # get all time sheet data from person in config file
 def generate_time_sheet_json_data(start_date, end_date):
-    lst_time_record = list()
+    lst_timesheet_record = list()
     x = 0
     y = len(list(config.persons.keys()))
     for person_name in tqdm(config.persons.keys()):
@@ -179,12 +177,12 @@ def generate_time_sheet_json_data(start_date, end_date):
             lst_response.append(json_response)
             i = i + 1
         time_sheet_data = get_tasks_content(lst_response, person_name)
-        lst_time_record.append(time_sheet_data)
+        lst_timesheet_record.append(time_sheet_data)
         x = x + 1
-    time_record = {
-        'items': lst_time_record
+    timesheet_record = {
+        'items': lst_timesheet_record
     }
-    return time_record
+    return timesheet_record
 
 # Writing to sample.json
 x = generate_time_sheet_json_data(config.start_date, config.end_date)
