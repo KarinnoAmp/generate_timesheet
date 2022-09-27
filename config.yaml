@@ -1,5 +1,8 @@
-start_date: 2022-09-01
-end_date: 2022-09-30
+start_date: 2022-10-01
+end_date: 2022-10-31
+notion_version: 2022-02-22
+# notion_version: 2022-06-28
+url: https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query
 persons:
   Nakarin Viyapron: fb6ab337-1d37-4efc-8730-efbe2c602a9f
   narongrith kesorn: a887832a-97b5-45e5-affd-dad56b27aaa2
@@ -22,6 +25,3 @@ persons:
   Noi Songchai: c3070d15-83d0-4519-ac24-2b9f60cbe0b8
   Aekasit: bee490e2-077d-4740-a66a-1be28f22ecfe
   Arcadia Admin: 5bcc7734-fb51-45ea-bdac-cc6764ed3be7
-url: https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query
-# notion_version: 2022-06-28
-notion_version: 2022-02-22
