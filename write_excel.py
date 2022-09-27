@@ -1,6 +1,8 @@
 import json
 from styleframe import StyleFrame, Styler, utils
 import pandas as pd
+from tqdm import tqdm
+
 
 PATH_OUTPUT_REPORT: str = r'./report_excel.xlsx'
 REPORT_HEADER: dict = {
@@ -29,10 +31,10 @@ class GenerateExcel:
         # workbook = load_workbook(self.path_output_report)
         excel_writer = StyleFrame.ExcelWriter(PATH_OUTPUT_REPORT)
         
-        for item in data['items']:
+        for item in tqdm(data['items']):
             person_name: str = item['person']
             person_task: list = item['data']
-            person_total: str = item['total_work_hours']
+            person_total_work_hours: str = item['total_work_hours']
             
             headers: list = list(REPORT_HEADER.keys())
             dataframe: list = []
@@ -46,7 +48,7 @@ class GenerateExcel:
                     task['project']
                     ]
                 dataframe.append(detail)
-            summary_row: list = ['', '', '', person_total, '', '']
+            summary_row: list = ['', '', '', person_total_work_hours, '', '']
             dataframe.append(summary_row)
             df = pd.DataFrame(dataframe, columns=headers)
             default_style = self.set_default_style()
