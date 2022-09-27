@@ -18,7 +18,7 @@ class GenerateExcel:
         self.path_output_report: str = PATH_OUTPUT_REPORT
     
     
-    def get_dict_data_from_jsonfile(seflf, path: str) -> dict:
+    def get_dict_data_from_jsonfile(self, path: str) -> dict:
         dict_data: dict = {}
         with open(path, 'r') as file:
             dict_data = json.load(file)
@@ -32,6 +32,7 @@ class GenerateExcel:
         for item in data['items']:
             person_name: str = item['person']
             person_task: list = item['data']
+            person_total: str = item['total']
             
             headers: list = list(REPORT_HEADER.keys())
             dataframe: list = []
@@ -45,6 +46,8 @@ class GenerateExcel:
                     task['project']
                     ]
                 dataframe.append(detail)
+            summary_row: list = ['', '', '', person_total, '', '']
+            dataframe.append(summary_row)
             df = pd.DataFrame(dataframe, columns=headers)
             default_style = self.set_default_style()
             sf = StyleFrame(df, styler_obj=default_style)
@@ -91,8 +94,8 @@ class GenerateExcel:
         column_header_set: list = list(REPORT_HEADER.keys())
         for header in column_header_set:
             sf = sf.set_column_width(columns=[header], width=REPORT_HEADER[header])
-        
+            
     
 generater = GenerateExcel()
-dict_data = generater.get_dict_data_from_jsonfile('./export_data')
+dict_data = generater.get_dict_data_from_jsonfile('./export_data.json')
 generater.write_excel(dict_data)
