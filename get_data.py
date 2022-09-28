@@ -5,6 +5,7 @@ import numbers
 import requests
 import yaml
 import json
+import write_excel
 
 notion_url = 'https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query'
 config     = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
@@ -184,8 +185,12 @@ def generate_time_sheet_json_data(start_date, end_date):
     }
     return timesheet_record
 
-# Writing to sample.json
-x = generate_time_sheet_json_data(config.start_date, config.end_date)
-json_object = json.dumps(x, indent=4)
-with open("export_data.json", "w") as outfile:
-    outfile.write(json_object)
+## Writing to sample.json
+data_result = generate_time_sheet_json_data(config.start_date, config.end_date)
+# json_object = json.dumps(data_result, indent=4)
+# with open("export_data.json", "w") as outfile:
+#     outfile.write(json_object)
+    
+## Add connect to module write_excel
+generator_excel = write_excel.GenerateExcel()
+generator_excel.write_excel(data_result)

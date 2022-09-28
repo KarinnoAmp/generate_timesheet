@@ -97,7 +97,8 @@ class GenerateExcel:
         for header in column_header_set:
             sf = sf.set_column_width(columns=[header], width=REPORT_HEADER[header])
             
-    
-generator = GenerateExcel()
-dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
-generator.write_excel(dict_data)
+
+## For Test
+# generator = GenerateExcel()
+# dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
+# generator.write_excel(dict_data)
