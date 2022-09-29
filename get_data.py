@@ -1,6 +1,6 @@
+from urllib import request
 from dotmap import DotMap
 from tqdm import tqdm
-import numbers
 import requests
 import yaml
 
@@ -8,12 +8,14 @@ import yaml
 config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
 # json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
 
+
 class mathCalculator:
     def __init__(self) -> None:
         pass
     
-    
-    def round_number(self, number: numbers, decimal: int=0) -> float:
+
+# Round the decimal in number
+    def roundNumber(self, number: float, decimal: int=0) -> float:
         digit = int('1' + (str(0) * decimal))
         number = number * digit
         mod_number = number % 1
@@ -28,7 +30,8 @@ class setApi:
     def __init__(self) -> None:
         pass
     
-        
+
+# Set request header
     def setHeader(self, notion_version: str) -> object:
         header = {
             'Authorization': 'Bearer secret_ftVfm6G44cEujeMsnIuxhSGeDV7IMSpZFHiu0YrjLrM',
@@ -38,6 +41,7 @@ class setApi:
         return header
 
 
+# Set request body
     def setBody(self, start_date: str, end_date: str, person_key: str, last_page=None) -> object:
         body = {
             'filter': {
@@ -91,6 +95,7 @@ class setApi:
         return body
 
 
+# Send request
     # sending the request for get time sheet data
     def sendRequest(self, url: str ,headers: object ,json_data: object) -> object:
         response = requests.post(url=url, headers=headers, json=json_data)
@@ -108,6 +113,7 @@ class notionData:
     def __init__(self):
         self.request = setApi()
         self.math = mathCalculator()
+
     
 # get list of tasks in notion
     def summaryTasks(self, json: object, person_name: str) -> object:
@@ -168,7 +174,7 @@ class notionData:
                 total_work_hours = total_work_hours + dict['total_work_hours']
                 content.append(dict)
                 
-        total_work_hours = self.math.round_number(total_work_hours, 2)
+        total_work_hours = self.math.roundNumber(total_work_hours, 2)
         timesheet_data = {
             'person': person_name,
             'data': content,
