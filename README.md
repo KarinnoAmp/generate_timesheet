@@ -1,5 +1,16 @@
 # Notion Timesheet generator
-*version 0.1A*
+*Version 0.2B*
+>version 0.2B*
+## Release note
+### New feature & improvement
+- Input query date from console
+- Change progress bar loading color
+- Adjust generated excel format
+### Bug fix
+- Fixed error when input wrong date format in console input
+- Fixed console log blink on color change when loading success
+---
+>version 0.1A*
 ## Release note
 ### New feature & improvement
 - Generate excel of notion timesheet data
@@ -9,7 +20,7 @@
 ### Bug fix
 - Fixed collect timesheet data with range more than 100 pages
 - Fixed round the number with 2 decimal
-- ---
+---
 ## Requirements
 > Python script for generating timesheet from
 

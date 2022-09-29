@@ -28,7 +28,7 @@ class GenerateExcel:
 
     def write_excel(self, data: dict):
         excel_writer = StyleFrame.ExcelWriter(PATH_OUTPUT_REPORT)
-        for item in tqdm(data['items']):
+        for item in tqdm(data['items'], ncols=100):
             person_name: str = item['person']
             person_task: list = item['data']
             headers: list = list(REPORT_HEADER.keys())
@@ -67,7 +67,7 @@ class GenerateExcel:
     ## New Function Implement
     def write_new_excel_style(self, data: dict):
         excel_writer = StyleFrame.ExcelWriter(PATH_OUTPUT_REPORT)
-        for item in tqdm(data['items']):
+        for item in tqdm(data['items'], ncols=100):
             person_name: str = item['person']
             person_task: list = item['data']
             person_total_work_hours: str = item['total_work_hours']
