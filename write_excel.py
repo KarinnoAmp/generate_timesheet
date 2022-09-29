@@ -60,7 +60,6 @@ class GenerateExcel:
             self.set_last_row_excel_style(style_frame, all_task)
             self.set_column_excel_width(style_frame)
             style_frame.to_excel(excel_writer, sheet_name=person_name,
-                row_to_add_filters=0,
                 columns_and_rows_to_freeze='A2')
         excel_writer.save()
 
