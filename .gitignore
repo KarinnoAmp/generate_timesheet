@@ -138,3 +138,5 @@ report_excel.xlsx
 export_data.json
 response_data.json
 BoardGame.py
+
+.pylintrc
