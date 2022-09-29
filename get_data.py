@@ -1,11 +1,12 @@
-from urllib import request
 from dotmap import DotMap
 from tqdm import tqdm
+from txt_style import bcolors
 import requests
 import yaml
 
 
 config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
+text = bcolors()
 # json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
 
 
@@ -100,8 +101,8 @@ class setApi:
     def sendRequest(self, url: str ,headers: object ,json_data: object) -> object:
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
-            print('\033[91m' + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
-            print('\033[91m' + 'message: ' + str(response.json()['code'])) # Red color
+            print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
+            print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
             exit()
         # json_object = json.dumps(response.json(), indent=4)
         # with open("response_data.json", "w") as outfile:
