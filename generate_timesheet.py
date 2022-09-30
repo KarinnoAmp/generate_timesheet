@@ -30,32 +30,32 @@ class getDate:
             try:
                 print(text.HEADER + 'Input start date' + text.ENDC)
                 print('Format: ddmmyyyy')
-                input_date = input(text.OKBLUE + 'INPUT_DATE: ' + text.ENDC)
+                input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
                 # input_date = 21102022
                 start_date = datetime.strptime(str(input_date), '%d%m%Y')
                 break
             except ValueError:
                 self.clearConsole()
-                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC + '\n')
+                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC)
                 continue
         self.clearConsole()
     # End date
         while True:
             try:
-                print(text.OKGREEN + 'Start date:' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
+                print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
                 print(text.HEADER + 'Input end date' + text.ENDC)
                 print('Format: ddmmyyyy')
-                input_date = input(text.OKBLUE + 'INPUT_DATE: ' + text.ENDC)
+                input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
                 end_date = datetime.strptime(str(input_date), '%d%m%Y')
                 if end_date < start_date:
                     self.clearConsole()
-                    print(text.FAIL + text.BOLD + 'Error: End date should greater than ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n')    
+                    print(text.FAIL + text.BOLD + 'Error: End date should greater than ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)    
                     continue
                 else:
                     break
             except ValueError:
                 self.clearConsole()
-                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC + '\n')
+                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC)
                 continue
         self.clearConsole()
         return start_date, end_date
