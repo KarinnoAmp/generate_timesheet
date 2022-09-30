@@ -31,7 +31,7 @@ class getDate:
                 print(text.HEADER + 'Input start date' + text.ENDC)
                 print('Format: ddmmyyyy')
                 input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
-                # input_date = 21102022
+                # input_date = '01092022'
                 start_date = datetime.strptime(str(input_date), '%d%m%Y')
                 break
             except ValueError:
@@ -46,6 +46,7 @@ class getDate:
                 print(text.HEADER + 'Input end date' + text.ENDC)
                 print('Format: ddmmyyyy')
                 input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
+                # input_date = '30092022'
                 end_date = datetime.strptime(str(input_date), '%d%m%Y')
                 if end_date < start_date:
                     self.clearConsole()
