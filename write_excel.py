@@ -71,7 +71,7 @@ class GenerateExcel:
             person_task: list = item['data']
             person_total_work_hours: str = item['total_work_hours']
             headers: list = list(REPORT_HEADER.keys())
-            dataframe: list = []
+            dataframe_list: list = []
             ## Initial data
             previous_date: str = ''
             task_end_date: str = ''
@@ -98,7 +98,7 @@ class GenerateExcel:
                         task['status'],
                         project_list
                         ]
-                    dataframe.append(detail)
+                    dataframe_list.append(detail)
                     title_list = []
                     total_work_hours_per_date = 0
                     task_end_date = ''
@@ -128,20 +128,22 @@ class GenerateExcel:
                 person_total_work_hours, '', '']
             summary_man_days: list = ['Total Man-Hours / 8', '', '',
                 person_total_work_hours / 8, '', '']
-            dataframe.append(summary_man_hours)
-            dataframe.append(summary_man_days)
-            df = pd.DataFrame(dataframe, columns=headers)
+            dataframe_list.append(summary_man_hours)
+            dataframe_list.append(summary_man_days)
+            dataframe = pd.DataFrame(dataframe_list, columns=headers)
             default_style = self.set_default_excel_style()
-            sf = StyleFrame(df, styler_obj=default_style)
-            self.set_header_excel_style(sf)
-            self.set_column_excel_style(sf)
-            self.set_last_row_excel_style(sf, number_all_task)
-            self.set_column_excel_width(sf)
-            self.set_row_excel_height(sf, height_point_style)
-            sf.to_excel(excel_writer, sheet_name=person_name, columns_and_rows_to_freeze='A2')
+            style_frame = StyleFrame(dataframe, styler_obj=default_style)
+            self.set_header_excel_style(style_frame)
+            self.set_column_excel_style(style_frame)
+            self.set_last_row_excel_style(style_frame, number_all_task)
+            self.set_column_excel_width(style_frame)
+            self.set_row_excel_height(style_frame, height_point_style)
+            style_frame.to_excel(excel_writer, sheet_name=person_name,
+                columns_and_rows_to_freeze='A2')
         excel_writer.save()
 
-    def set_default_excel_style(self):
+    @staticmethod
+    def set_default_excel_style():
         light_cyan_color: str = 'b7e1cd'
         default_style = Styler(
             horizontal_alignment='center',
@@ -152,7 +154,8 @@ class GenerateExcel:
             )
         return default_style
 
-    def set_header_excel_style(self, style_frame):
+    @staticmethod
+    def set_header_excel_style(style_frame):
         cyan_color: str = '46bdc6'
         header_style = Styler(
             horizontal_alignment='center',
@@ -165,7 +168,8 @@ class GenerateExcel:
             )
         style_frame.apply_headers_style(styler_obj=header_style)
 
-    def set_column_excel_style(self, style_frame):
+    @staticmethod
+    def set_column_excel_style(style_frame):
         light_cyan_color: str = 'b7e1cd'
         ## Add column style follow header
         header_list: list = ['Title']
@@ -178,7 +182,8 @@ class GenerateExcel:
             )
         style_frame.apply_column_style(cols_to_style=header_list, styler_obj=column_style)
 
-    def set_last_row_excel_style(self, style_frame, last_row_data: int):
+    @staticmethod
+    def set_last_row_excel_style(style_frame, last_row_data: int):
         cyan_color: str = '46bdc6'
         last_row_style = Styler(
             bg_color=cyan_color,
@@ -205,12 +210,14 @@ class GenerateExcel:
                 )
             last_row_data += 1
 
-    def set_column_excel_width(self, style_frame):
+    @staticmethod
+    def set_column_excel_width(style_frame):
         column_header_set: list = list(REPORT_HEADER.keys())
         for header in column_header_set:
             style_frame.set_column_width(columns=[header], width=REPORT_HEADER[header])
 
-    def set_row_excel_height(self, style_frame, height_point_style: list):
+    @staticmethod
+    def set_row_excel_height(style_frame, height_point_style: list):
         last_row: int = len(height_point_style)
         row: int = 2
         for index_row in range(last_row):
