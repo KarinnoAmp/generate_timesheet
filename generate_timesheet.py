@@ -63,4 +63,6 @@ class getDate:
 
 get_date = getDate()
 startDate, endDate = get_date.getDate()
-generate_excel.write_excel(data.getTasksData(str(startDate.date()), str(endDate.date())))
+# print(startDate.date(), endDate.date())
+generate_excel.write_excel(data.getTasksData(startDate, endDate))
+# generate_excel.write_excel(data.getTasksData(str(startDate.date()), str(endDate.date())))

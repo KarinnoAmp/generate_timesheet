@@ -1,6 +1,7 @@
 from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
+# from datetime import datetime
 import requests
 import yaml
 
@@ -191,9 +192,10 @@ class notionData:
     
 
 # get all time sheet data from person in config file
-    def getTasksData(self, start_date: str, end_date: str) -> object:
+    def getTasksData(self, start_date, end_date) -> object:
         lst_timesheet_record = list()
         x = 0
+        print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
         for person_name in tqdm(config.persons.keys(), ncols=100, colour='cyan', desc='Loading data..'):
             i = 0
             boolean = True
@@ -201,10 +203,10 @@ class notionData:
             while boolean == True:
             # First 100 Notion's tasks
                 if i < 1:
-                    data = self.request.setBody(start_date, end_date, str(config.persons[person_name]))
+                    data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
             # When Notion's tasks more than 100 tasks
                 else:
-                    data = self.request.setBody(start_date, end_date, str(config.persons[person_name]), str(json_response['next_cursor']))
+                    data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
                 json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
                 boolean = json_response['has_more']
                 lst_response.append(json_response)
