@@ -48,6 +48,12 @@ class setApi:
             'filter': {
                 'and': [
                     {
+                        'property': 'Task type',
+                        'select': {
+                            'does_not_equal': 'Information'
+                        }
+                    },
+                    {
                         'property': 'Responsible person',
                         'people': {
                             'contains': person_key
