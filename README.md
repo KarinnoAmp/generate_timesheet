@@ -1,23 +1,36 @@
-# Notion Timesheet generator
-*Version 0.2B*
->version 0.2B*
-## Release note
-### New feature & improvement
+# No TimeSheet
+> *Version 0.3*
+
+## Version 0.3
+### *New feature & improvement*
+- Change name to No TimeSheet
+- Can input date into console separately from config.yaml file
+- Can type "help" for show hint command
+- Can use command "exit" to exit the executing
+- Show query date while getting Notion data
+- Add more command while typing start/end date eg. -exit, -clear
+- Adjust error message when typing unsupported command
+- Adjust generated excel format
+- Improve script function
+### *Bug fix*
+- Fixed error when input upper or title case command
+---
+## version 0.2B
+### *New feature & improvement*
 - Input query date from console
 - Change progress bar loading color
 - Adjust generated excel format
-### Bug fix
+### *Bug fix*
 - Fixed error when input wrong date format in console input
 - Fixed console log blink on color change when loading success
 ---
->version 0.1A*
-## Release note
-### New feature & improvement
+## Version 0.1A
+### *New feature & improvement*
 - Generate excel of notion timesheet data
 - Add more user id to config file
 - Add color to progress bar
 - Add http error message while send requests was failed
-### Bug fix
+### *Bug fix*
 - Fixed collect timesheet data with range more than 100 pages
 - Fixed round the number with 2 decimal
 ---
