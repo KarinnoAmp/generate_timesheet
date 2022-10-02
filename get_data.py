@@ -1,6 +1,7 @@
 from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
+import json
 # from datetime import datetime
 import requests
 import yaml
@@ -221,14 +222,14 @@ class notionData:
         timesheet_record = {
             'items': lst_timesheet_record
         }
+        json_object = json.dumps(timesheet_record, indent=4)
+        with open("export_data.json", "w") as outfile:
+            outfile.write(json_object)
         return timesheet_record
 
 
 ## Writing to sample.json
 
-# json_object = json.dumps(data_result, indent=4)
-# with open("export_data.json", "w") as outfile:
-#     outfile.write(json_object)
     
 ## Add connect to module write_excel
 # generator_excel = write_excel.GenerateExcel()

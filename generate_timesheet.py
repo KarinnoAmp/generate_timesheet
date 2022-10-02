@@ -28,41 +28,105 @@ class getDate:
     # Start date
         while True:
             try:
-                print(text.HEADER + 'Input start date' + text.ENDC)
-                print('Format: ddmmyyyy')
-                input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
-                # input_date = '01092022'
-                start_date = datetime.strptime(str(input_date), '%d%m%Y')
+                input_date = input(text.WARNING + 'INPUT_START_DATE: ' + text.ENDC)
+                # input_date = '01-09-2022'
+                if str(input_date.upper()) == 'HELP':
+                    self.helpText()
+                    continue
+                elif str(input_date.upper()) == 'EXIT':
+                    self.clearConsole()
+                    exit()
+                elif str(input_date) == str():
+                    self.clearConsole()
+                    self.errorEmptyText()
+                    continue
+                else:
+                    start_date = datetime.strptime(str(input_date), '%d-%m-%Y')
                 break
             except ValueError:
                 self.clearConsole()
-                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC)
+                self.errorWrongDate()
                 continue
         self.clearConsole()
+        
     # End date
         while True:
             try:
                 print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
-                print(text.HEADER + 'Input end date' + text.ENDC)
-                print('Format: ddmmyyyy')
-                input_date = input(text.OKCYAN + 'INPUT_DATE: ' + text.ENDC)
-                # input_date = '30092022'
-                end_date = datetime.strptime(str(input_date), '%d%m%Y')
+                input_date = input(text.WARNING + 'INPUT_END_DATE: ' + text.ENDC)
+                # input_date = '30-09-2022'
+                if str(input_date.upper()) == 'HELP':
+                    self.helpText()
+                    continue
+                elif str(input_date.upper()) == 'CLEAR':
+                    start_date, end_date = self.getDate()
+                    break
+                elif str(input_date.upper()) == 'EXIT':
+                    self.clearConsole()
+                    exit()
+                elif str(input_date) == str():
+                    self.clearConsole()
+                    self.errorEmptyText()
+                    continue
+                else:
+                    end_date = datetime.strptime(str(input_date), '%d-%m-%Y')
+                
                 if end_date < start_date:
                     self.clearConsole()
-                    print(text.FAIL + text.BOLD + 'Error: End date should greater than ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)    
+                    self.endDateGreater(start_date)
                     continue
                 else:
                     break
             except ValueError:
                 self.clearConsole()
-                print(text.FAIL + text.BOLD + 'Error: Wrong date' + text.ENDC)
+                self.errorWrongDate()
                 continue
         self.clearConsole()
         return start_date, end_date
-
+    
+    
+    def helpText(self):
+        self.clearConsole()
+        print(text.HEADER + 'NoTime' + text.ENDC + '\n' +
+              'Using with Notion time sheet recorded database to generating Excel time sheet' + '\n'*2 +
+              text.HEADER + '*** Command ***' + text.ENDC + '\n' +
+              '- ' + text.OKCYAN + text.UNDERLINE + 'help' + text.ENDC + '  : Showing help command' + '\n' +
+              '- ' + text.OKCYAN + text.UNDERLINE + 'exit' + text.ENDC + '  : Exit the executing'   + '\n' +
+              '- ' + text.OKCYAN + text.UNDERLINE + 'clear' + text.ENDC + ' : Clear input start date (Only useable while INPUT END DATE)' + '\n'*2 +
+              text.HEADER + '*** Support ***' + text.ENDC + '\n' +
+              'date format' + '\n' + 
+              'dd-mm-yyyy' + '\n' +
+              text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
+              )
+        
+        
+    def errorWrongDate(self):
+        print(text.FAIL +
+              'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
+              'Type "help" for hint command' + '\n'
+              )
+        
+        
+    def errorEmptyText(self):
+        print(text.FAIL + 
+              'ValueError: Please enter date or command' + text.ENDC + '\n'
+              'Type "help" for hint command' + '\n'
+              )
+    
+    def endDateGreater(self, start_date):
+        print(text.FAIL + 
+              'ValueError: End date should greater than ' + 
+              str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
+              )    
+        
+        
+        
+        
 get_date = getDate()
+get_date.clearConsole()
 startDate, endDate = get_date.getDate()
-# print(startDate.date(), endDate.date())
 generate_excel.write_excel(data.getTasksData(startDate, endDate))
+# print(startDate.date(), endDate.date())
 # generate_excel.write_excel(data.getTasksData(str(startDate.date()), str(endDate.date())))
+
+# print(type(input()))
