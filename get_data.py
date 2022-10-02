@@ -222,9 +222,9 @@ class notionData:
         timesheet_record = {
             'items': lst_timesheet_record
         }
-        json_object = json.dumps(timesheet_record, indent=4)
-        with open("export_data.json", "w") as outfile:
-            outfile.write(json_object)
+        # json_object = json.dumps(timesheet_record, indent=4)
+        # with open("export_data.json", "w") as outfile:
+        #     outfile.write(json_object)
         return timesheet_record
 
 

@@ -42,8 +42,17 @@
 ```bash
 pip freeze > requirements.txt
 ```
+2. Create a new python environment
+### Windows
+```bash
+python -m venv Environment
+```
+### MacOS or Linux
+```bash
+python3 -m venv Environment
+```
 
-2. Copy or move this requirements.txt to another environment and install with it.
+3. Copy or move this requirements.txt to another environment and install with it.
 
 ```bash
 pip install -r requirements.txt
