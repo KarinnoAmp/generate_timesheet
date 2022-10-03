@@ -225,8 +225,8 @@ class GenerateExcel:
             row += 1
 
 
-## For Test
-generator = GenerateExcel()
-dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
-generator.write_excel(dict_data)
-# generator.write_new_excel_style(dict_data)
+# ## For Test
+# generator = GenerateExcel()
+# dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
+# generator.write_excel(dict_data)
+# # generator.write_new_excel_style(dict_data)
