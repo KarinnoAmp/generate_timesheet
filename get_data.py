@@ -37,7 +37,7 @@ class setApi:
 # Set request header
     def setHeader(self, notion_version: str) -> object:
         header = {
-            'Authorization': 'Bearer secret_ftVfm6G44cEujeMsnIuxhSGeDV7IMSpZFHiu0YrjLrM',
+            'Authorization': 'Bearer ' + str(config.authorization),
             'Content Type': 'application/json',
             'Notion-Version': notion_version
         }
