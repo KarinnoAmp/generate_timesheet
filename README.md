@@ -1,6 +1,16 @@
 # No TimeSheet
-> *Version 0.3*
+> *Version 1.1 Release*
 
+## Version 1.1
+### *New feature & improvement*
+- This is release version
+- Improve config.yaml file
+---
+## Version 1.0
+### *New feature & improvement*
+- Can run script generate with .exe file or .script file
+- Build python script as .exe file on windows and .script in macos
+---
 ## Version 0.3
 ### *New feature & improvement*
 - Change name to No TimeSheet
@@ -56,4 +66,8 @@ python3 -m venv Environment
 
 ```bash
 pip install -r requirements.txt
+```
+4. How to build python script to .exe or script file
+```bash
+pyinstaller --onefile file.py
 ```

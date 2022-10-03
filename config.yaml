@@ -1,6 +1,5 @@
 notion_version: 2022-02-22
 authorization: secret_ftVfm6G44cEujeMsnIuxhSGeDV7IMSpZFHiu0YrjLrM
-# notion_version: 2022-06-28
 url: https://api.notion.com/v1/databases/e98588084035474394b5bec1651c6eef/query
 persons:
   Nakarin Viyapron: fb6ab337-1d37-4efc-8730-efbe2c602a9f
