@@ -140,3 +140,4 @@ response_data.json
 BoardGame.py
 
 .pylintrc
+config.yaml
