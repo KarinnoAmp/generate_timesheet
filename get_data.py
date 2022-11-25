@@ -1,6 +1,7 @@
 from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
+from datetime import datetime
 import json
 # from datetime import datetime
 import requests
@@ -213,12 +214,12 @@ class notionData:
     
     
 
-    def getTasksData(self, start_date:str, end_date:str) -> object:
+    def getTasksData(self, start_date: str, end_date: str) -> object:
         '''get all time sheet data from person in config file'''
         lst_timesheet_record = list()
         x = 0
         # print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
-        for person_name in tqdm(config.persons.keys(), ncols=100, colour='cyan', desc='Loading data..'):
+        for person_name in tqdm(config.persons.keys(), ncols=100, colour='cyan', desc='Collecting data..'):
             i = 0
             boolean = True
             lst_response = list()
@@ -226,11 +227,9 @@ class notionData:
             # First 100 Notion's tasks
                 if i < 1:
                     data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
-                    # data = self.request.setBody(str(start_date), str(end_date), str(config.persons[person_name]))
             # When Notion's tasks more than 100 tasks
                 else:
                     data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
-                    # data = self.request.setBody(str(start_date), str(end_date), str(config.persons[person_name]))
                 json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
                 boolean = json_response['has_more']
                 lst_response.append(json_response)
@@ -251,7 +250,9 @@ class notionData:
 
 
 if __name__ == '__main__':
-    timesheet_record = notionData().getTasksData('2022-10-01', '2022-10-31')
-    json_object = json.dumps(timesheet_record, indent=4)
+    start_date: str= '01-11-2022'
+    end_date: str = '01-11-2022'
+    timesheet_record: dict = notionData().getTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
+    json_object: dict = json.dumps(timesheet_record, indent=4)
     with open("export_data.json", "w") as outfile:
         outfile.write(json_object)

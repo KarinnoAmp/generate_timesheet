@@ -20,8 +20,8 @@ class getDate:
     
     
     
-# Clear console log
     def clearConsole(self):
+        '''Clear console log'''
         if str(os.name) == 'nt':
             os.system('cls')
         else:
@@ -29,8 +29,8 @@ class getDate:
     
     
     
-# Get date from console input
     def getDate(self):
+        '''Get date from console input'''
         self.clearConsole()
     # Start date
         while True:
@@ -129,11 +129,15 @@ class getDate:
               str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
         )
     
-    
+    def showCompleteMessage(self):
+        print(text.OKGREEN +
+              'Generate timesheet completed!!' + text.ENDC + '\n'
+        )
     
     
 if __name__ == '__main__':
-    get_date = getDate()
-    get_date.clearConsole()
-    startDate, endDate = get_date.getDate()
+    getDate().clearConsole()
+    startDate, endDate = getDate().getDate()
     generate_excel.write_excel(data.getTasksData(startDate, endDate))
+    getDate().clearConsole()
+    getDate().showCompleteMessage()
