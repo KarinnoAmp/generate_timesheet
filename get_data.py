@@ -7,15 +7,15 @@ import requests
 import yaml
 
 
+# json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
 config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
 text = bcolors()
-# json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
-
 
 class mathCalculator:
     def __init__(self) -> None:
         pass
     
+
 
 # Round the decimal in number
     def roundNumber(self, number: float, decimal: int=0) -> float:
@@ -29,6 +29,8 @@ class mathCalculator:
         return round_number
 
 
+
+
 class setApi:
     def __init__(self) -> None:
         pass
@@ -38,10 +40,11 @@ class setApi:
     def setHeader(self, notion_version: str) -> object:
         header = {
             'Authorization': 'Bearer ' + str(config.authorization),
-            'Content Type': 'application/json',
+            'Content-Type': 'application/json',
             'Notion-Version': notion_version
         }
         return header
+
 
 
 # Set request body
@@ -88,6 +91,18 @@ class setApi:
                         'multi_select': {
                             'does_not_contain': 'Holiday'
                         }
+                    },
+                    {
+                        'property': 'Task type',
+                        'select': {
+                            'does_not_equal': 'Leave'
+                        }
+                    },
+                    {
+                        'property': 'Task type',
+                        'select': {
+                            'does_not_equal': 'Information'
+                        }
                     }
                 ]
             },
@@ -118,10 +133,13 @@ class setApi:
         return DotMap(response.json())
 
 
+
 class notionData:
     def __init__(self):
         self.request = setApi()
         self.math = mathCalculator()
+        
+
 
     
 # get list of tasks in notion
@@ -193,10 +211,10 @@ class notionData:
     
 
 # get all time sheet data from person in config file
-    def getTasksData(self, start_date, end_date) -> object:
+    def getTasksData(self, start_date:str, end_date:str) -> object:
         lst_timesheet_record = list()
         x = 0
-        print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
+        # print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
         for person_name in tqdm(config.persons.keys(), ncols=100, colour='cyan', desc='Loading data..'):
             i = 0
             boolean = True
@@ -205,9 +223,11 @@ class notionData:
             # First 100 Notion's tasks
                 if i < 1:
                     data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
+                    # data = self.request.setBody(str(start_date), str(end_date), str(config.persons[person_name]))
             # When Notion's tasks more than 100 tasks
                 else:
                     data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
+                    # data = self.request.setBody(str(start_date), str(end_date), str(config.persons[person_name]))
                 json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
                 boolean = json_response['has_more']
                 lst_response.append(json_response)
@@ -222,15 +242,12 @@ class notionData:
         timesheet_record = {
             'items': lst_timesheet_record
         }
-        # json_object = json.dumps(timesheet_record, indent=4)
-        # with open("export_data.json", "w") as outfile:
-        #     outfile.write(json_object)
         return timesheet_record
 
 
-## Writing to sample.json
 
-    
-## Add connect to module write_excel
-# generator_excel = write_excel.GenerateExcel()
-# generator_excel.write_excel(data_result)
+if __name__ == '__main__':
+    timesheet_record = notionData().getTasksData('2022-10-01', '2022-10-31')
+    json_object = json.dumps(timesheet_record, indent=4)
+    with open("export_data.json", "w") as outfile:
+        outfile.write(json_object)
