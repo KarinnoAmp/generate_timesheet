@@ -133,6 +133,9 @@ class getDate:
         print(text.OKGREEN +
               'Generate timesheet completed!!' + text.ENDC + '\n'
         )
+        input('Press Enter to continue')
+    
+    
     
     
 if __name__ == '__main__':
