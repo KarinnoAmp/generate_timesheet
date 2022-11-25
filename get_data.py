@@ -9,9 +9,11 @@ import yaml
 
 
 
-
-config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
 text = bcolors()
+try:
+    config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
+except FileNotFoundError:
+    print(text.FAIL + 'Cannot find config.yaml file' + text.ENDC)
 
 
 
