@@ -121,12 +121,8 @@ class getDate:
         
         
         
-        
-get_date = getDate()
-get_date.clearConsole()
-startDate, endDate = get_date.getDate()
-generate_excel.write_excel(data.getTasksData(startDate, endDate))
-# print(startDate.date(), endDate.date())
-# generate_excel.write_excel(data.getTasksData(str(startDate.date()), str(endDate.date())))
-
-# print(type(input()))
+if __name__ == '__main__':
+    get_date = getDate()
+    get_date.clearConsole()
+    startDate, endDate = get_date.getDate()
+    generate_excel.write_excel(data.getTasksData(startDate, endDate))
