@@ -14,6 +14,8 @@ try:
     config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
 except FileNotFoundError:
     print(text.FAIL + 'Cannot find config.yaml file' + text.ENDC)
+    input('Press Enter to continue..')
+    exit()
 
 
 
