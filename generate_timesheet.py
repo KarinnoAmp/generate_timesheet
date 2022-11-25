@@ -5,13 +5,19 @@ from write_excel import GenerateExcel
 import os
 
 
+
+
 data = notionData()
 generate_excel = GenerateExcel()
 text = bcolors()
 
+
+
+
 class getDate:  
     def __init__(self) -> None:
         pass
+    
     
     
 # Clear console log
@@ -20,6 +26,7 @@ class getDate:
             os.system('cls')
         else:
             os.system('clear')
+    
     
     
 # Get date from console input
@@ -47,14 +54,12 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        self.clearConsole()
-        
+        self.clearConsole()       
     # End date
         while True:
             try:
                 print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
                 input_date = input(text.WARNING + 'INPUT_END_DATE: ' + text.ENDC)
-                # input_date = '30-09-2022'
                 if str(input_date.upper()) == 'HELP':
                     self.helpText()
                     continue
@@ -85,6 +90,7 @@ class getDate:
         return start_date, end_date
     
     
+    
     def helpText(self):
         self.clearConsole()
         print(text.HEADER + 'NoTime' + text.ENDC + '\n' +
@@ -97,30 +103,35 @@ class getDate:
               'date format' + '\n' + 
               'dd-mm-yyyy' + '\n' +
               text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
-              )
-        
-        
+        )
+    
+    
+    
     def errorWrongDate(self):
         print(text.FAIL +
               'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
               'Type "help" for hint command' + '\n'
-              )
+        )
+        
         
         
     def errorEmptyText(self):
         print(text.FAIL + 
               'ValueError: Please enter date or command' + text.ENDC + '\n'
               'Type "help" for hint command' + '\n'
-              )
+        )
+    
+    
     
     def endDateGreater(self, start_date):
         print(text.FAIL + 
               'ValueError: End date should greater than ' + 
               str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
-              )    
-        
-        
-        
+        )
+    
+    
+    
+    
 if __name__ == '__main__':
     get_date = getDate()
     get_date.clearConsole()

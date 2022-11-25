@@ -7,9 +7,13 @@ import requests
 import yaml
 
 
-# json_data  = DotMap(json.load(open('response_data', encoding='utf-8')))
+
+
 config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
 text = bcolors()
+
+
+
 
 class mathCalculator:
     def __init__(self) -> None:
@@ -17,8 +21,8 @@ class mathCalculator:
     
 
 
-# Round the decimal in number
     def roundNumber(self, number: float, decimal: int=0) -> float:
+        '''Round the decimal in number'''
         digit = int('1' + (str(0) * decimal))
         number = number * digit
         mod_number = number % 1
@@ -36,8 +40,9 @@ class setApi:
         pass
     
 
-# Set request header
+
     def setHeader(self, notion_version: str) -> object:
+        '''Set request header'''
         header = {
             'Authorization': 'Bearer ' + str(config.authorization),
             'Content-Type': 'application/json',
@@ -47,8 +52,8 @@ class setApi:
 
 
 
-# Set request body
     def setBody(self, start_date: str, end_date: str, person_key: str, last_page=None) -> object:
+        '''Set request body'''
         body = {
             'filter': {
                 'and': [
@@ -119,18 +124,16 @@ class setApi:
         return body
 
 
-# Send request
-    # sending the request for get time sheet data
+
     def sendRequest(self, url: str ,headers: object ,json_data: object) -> object:
+        '''sending the request for get time sheet data'''
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
             print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
             print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
             exit()
-        # json_object = json.dumps(response.json(), indent=4)
-        # with open("response_data.json", "w") as outfile:
-        #     outfile.write(json_object)
         return DotMap(response.json())
+
 
 
 
@@ -140,10 +143,9 @@ class notionData:
         self.math = mathCalculator()
         
 
-
     
-# get list of tasks in notion
     def summaryTasks(self, json: object, person_name: str) -> object:
+        '''get list of tasks in notion'''
         content = list()
         total_work_hours = float(0)
         # print('\n' + person_name)
@@ -209,9 +211,10 @@ class notionData:
         }
         return DotMap(timesheet_data)
     
+    
 
-# get all time sheet data from person in config file
     def getTasksData(self, start_date:str, end_date:str) -> object:
+        '''get all time sheet data from person in config file'''
         lst_timesheet_record = list()
         x = 0
         # print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
@@ -243,6 +246,7 @@ class notionData:
             'items': lst_timesheet_record
         }
         return timesheet_record
+
 
 
 
