@@ -2,6 +2,7 @@ from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
 from datetime import datetime
+import time
 import json
 # from datetime import datetime
 import requests
@@ -46,9 +47,9 @@ class setApi:
     
 
 
-    def setHeader(self, notion_version: str) -> object:
+    def setHeader(self, notion_version: str) -> dict:
         '''Set request header'''
-        header = {
+        header: dict = {
             'Authorization': 'Bearer ' + str(config.authorization),
             'Content-Type': 'application/json',
             'Notion-Version': notion_version
@@ -57,9 +58,9 @@ class setApi:
 
 
 
-    def setBody(self, start_date: str, end_date: str, person_key: str, last_page=None) -> object:
+    def setBody(self, start_date: str, end_date: str, person_key: str, last_page=None) -> dict:
         '''Set request body'''
-        body = {
+        body: dict= {
             'filter': {
                 'and': [
                     {
@@ -130,7 +131,7 @@ class setApi:
 
 
 
-    def sendRequest(self, url: str ,headers: object ,json_data: object) -> object:
+    def sendRequest(self, url: str ,headers: dict ,json_data: json) -> json:
         '''sending the request for get time sheet data'''
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
@@ -141,6 +142,35 @@ class setApi:
 
 
 
+    def setBodyGetPerson(self) -> dict:
+        body: dict = {
+            'filter': {
+                'and': [
+                    {
+                        'property': 'Task type',
+                        'select': {
+                            'equals': 'Information'
+                        }
+                    },
+                    {
+                        'property': 'Date',
+                        'date': {
+                            'on_or_before': '2022-11-01'
+                        }
+                    },
+                    {
+                        'property': 'Date',
+                        'date': {
+                            'on_or_after': '2022-11-01'
+                        }
+                    }
+                ]
+            }
+        }
+        # print(body)
+        return  body
+
+
 
 class notionData:
     def __init__(self):
@@ -149,28 +179,27 @@ class notionData:
         
 
     
-    def summaryTasks(self, json: object, person_name: str) -> object:
+    def summaryTasks(self, json: json, person_name: str) -> object:
         '''get list of tasks in notion'''
         content = list()
         total_work_hours = float(0)
-        # print('\n' + person_name)
         for y in range(len(json)):
             for i in range(len(json[y].results)):
             # Check task title
                 if len(json[y].results[i].properties.Task.title) == 0:
                     title = None
                 else:
-                    title =  str(json[y].results[i].properties.Task.title[0].plain_text)   
+                    title: str =  str(json[y].results[i].properties.Task.title[0].plain_text)   
                      
             # Check start date
                 if json[y].results[i].properties.Date.date.start != None:
-                    start_date = list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0]
+                    start_date: list = list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0]
                 else:
                     start_date = None
             
             # Check end date
                 if json[y].results[i].properties.Date.date.end != None:
-                    end_date = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
+                    end_date: list = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
                 else:
                     end_date = None
             
@@ -179,7 +208,7 @@ class notionData:
             
             # Check tasks Status
                 if json[y].results[i].properties.Status.status != None:
-                    status = json[y].results[i].properties.Status.status.name
+                    status: json = json[y].results[i].properties.Status.status.name
                 else:
                     status = None
             
@@ -187,11 +216,11 @@ class notionData:
                 if len(json[y].results[i].properties.Project.multi_select) > 1:
                     for x in range(len(json[y].results[i].properties.Project.multi_select)):
                         if x < 1:
-                            project = str(json[y].results[i].properties.Project.multi_select[x].name)
+                            project: str = str(json[y].results[i].properties.Project.multi_select[x].name)
                         else:
-                            project = str(project) + ', ' + str(json[y].results[i].properties.Project.multi_select[x].name)
+                            project: str = str(project) + ', ' + str(json[y].results[i].properties.Project.multi_select[x].name)
                 elif 1 >= len(json[y].results[i].properties.Project.multi_select) > 0:
-                    project = str(json[y].results[i].properties.Project.multi_select[0].name)
+                    project: str = str(json[y].results[i].properties.Project.multi_select[0].name)
                 else:
                     project = None
             
@@ -208,8 +237,8 @@ class notionData:
                 total_work_hours = total_work_hours + dict['total_work_hours']
                 content.append(dict)
                 
-        total_work_hours = self.math.roundNumber(total_work_hours, 2)
-        timesheet_data = {
+        total_work_hours: float = self.math.roundNumber(total_work_hours, 2)
+        timesheet_data: dict = {
             'person': person_name,
             'data': content,
             'total_work_hours': total_work_hours
@@ -218,39 +247,49 @@ class notionData:
     
     
 
-    def getTasksData(self, start_date: str, end_date: str) -> object:
+    def getTasksData(self, start_date: str, end_date: str) -> dict:
         '''get all time sheet data from person in config file'''
-        lst_timesheet_record = list()
+        lst_timesheet_record: list = list()
         x = 0
-        # print(text.BOLD + 'Generating timesheet from: ' + text.ENDC + text.WARNING + str(start_date.strftime('%d %b %Y')) + ' --> ' + str(end_date.strftime('%d %b %Y') + text.ENDC))
-        for person_name in tqdm(config.persons.keys(), ncols=100, colour='cyan', desc='Collecting data..'):
+        persons: dict = self.getPerson()
+        for person_name in tqdm(persons.keys(), ncols=100, colour='cyan', desc='Requesting data..'):
             i = 0
-            boolean = True
-            lst_response = list()
+            boolean: bool = True
+            lst_response: list= list()
+            # Collect all timesheet data
             while boolean == True:
             # First 100 Notion's tasks
                 if i < 1:
-                    data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
+                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
             # When Notion's tasks more than 100 tasks
                 else:
-                    data = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
-                json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
-                boolean = json_response['has_more']
+                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
+                json_response: json = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
+                boolean: bool = json_response['has_more']
                 lst_response.append(json_response)
-                i = i + 1
+                i += 1
                 # End of While
                 
-            time_sheet_data = self.summaryTasks(lst_response, person_name)
+            time_sheet_data: object = self.summaryTasks(lst_response, person_name)
             lst_timesheet_record.append(time_sheet_data)
             x += 1
             # End of For
             
-        timesheet_record = {
+        timesheet_record: dict = {
             'items': lst_timesheet_record
         }
         return timesheet_record
 
 
+
+    def getPerson(self) -> dict:
+        data = self.request.setBodyGetPerson()
+        json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
+        persons = dict()
+        for data in tqdm(json_response.results[0].properties['Responsible person'].people, ncols=100, colour='cyan', desc='Getting person..'):
+            persons.update({data.name: data.id})
+        # print(persons)
+        return persons
 
 
 if __name__ == '__main__':
@@ -260,3 +299,4 @@ if __name__ == '__main__':
     json_object: dict = json.dumps(timesheet_record, indent=4)
     with open("export_data.json", "w") as outfile:
         outfile.write(json_object)
+    # notionData().getPerson()
