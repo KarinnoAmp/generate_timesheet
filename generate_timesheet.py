@@ -36,7 +36,6 @@ class getDate:
         while True:
             try:
                 input_date = input(text.WARNING + 'INPUT_START_DATE: ' + text.ENDC)
-                # input_date = '01-09-2022'
                 if str(input_date.upper()) == 'HELP':
                     self.helpText()
                     continue
@@ -54,7 +53,7 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        self.clearConsole()       
+        self.clearConsole()
     # End date
         while True:
             try:
@@ -134,6 +133,7 @@ class getDate:
               'Generate timesheet completed!!' + text.ENDC + '\n'
         )
         input('Press Enter to continue')
+        self.clearConsole()
     
     
     
