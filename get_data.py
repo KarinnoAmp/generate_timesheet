@@ -54,6 +54,7 @@ class setApi:
             'Content-Type': 'application/json',
             'Notion-Version': notion_version
         }
+        # print(header)
         return header
 
 
@@ -263,10 +264,10 @@ class notionData:
             while boolean == True:
             # First 100 Notion's tasks
                 if i < 1:
-                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]))
+                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(persons[person_name]))
             # When Notion's tasks more than 100 tasks
                 else:
-                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(config.persons[person_name]), str(json_response['next_cursor']))
+                    data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(persons[person_name]), str(json_response['next_cursor']))
                 json_response: json = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
                 boolean: bool = json_response['has_more']
                 lst_response.append(json_response)
@@ -297,7 +298,7 @@ class notionData:
 
 if __name__ == '__main__':
     start_date: str= '01-11-2022'
-    end_date: str = '30-11-2022'
+    end_date: str = '01-11-2022'
     timesheet_record: dict = notionData().getTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
     json_object: dict = json.dumps(timesheet_record, indent=4)
     with open("export_data.json", "w") as outfile:
