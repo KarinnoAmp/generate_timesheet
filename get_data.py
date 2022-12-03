@@ -2,9 +2,7 @@ from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
 from datetime import datetime
-import time
 import json
-# from datetime import datetime
 import requests
 import yaml
 
