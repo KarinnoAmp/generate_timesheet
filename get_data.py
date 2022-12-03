@@ -193,13 +193,16 @@ class notionData:
                      
             # Check start date
                 if json[y].results[i].properties.Date.date.start != None:
-                    start_date: str = datetime.strftime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0])
+                    start_date = datetime.strptime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0], '%Y-%m-%d')
+                    start_date = str(start_date.strftime('%d/%m/%Y'))
                 else:
                     start_date = None
             
             # Check end date
                 if json[y].results[i].properties.Date.date.end != None:
-                    end_date: str = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
+                    end_date = datetime.strptime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0], '%Y-%m-%d')
+                    end_date = str(end_date.strftime('%d/%m/%Y'))
+                    # end_date: str = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
                 else:
                     end_date = None
             
@@ -294,7 +297,7 @@ class notionData:
 
 if __name__ == '__main__':
     start_date: str= '01-11-2022'
-    end_date: str = '01-11-2022'
+    end_date: str = '30-11-2022'
     timesheet_record: dict = notionData().getTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
     json_object: dict = json.dumps(timesheet_record, indent=4)
     with open("export_data.json", "w") as outfile:
