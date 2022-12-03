@@ -193,13 +193,13 @@ class notionData:
                      
             # Check start date
                 if json[y].results[i].properties.Date.date.start != None:
-                    start_date: list = list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0]
+                    start_date: str = datetime.strftime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0])
                 else:
                     start_date = None
             
             # Check end date
                 if json[y].results[i].properties.Date.date.end != None:
-                    end_date: list = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
+                    end_date: str = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
                 else:
                     end_date = None
             
