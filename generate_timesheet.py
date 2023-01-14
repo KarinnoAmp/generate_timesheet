@@ -1,25 +1,12 @@
 from datetime import datetime
-from get_data import notionData
-from txt_style import bcolors
-from write_excel import GenerateExcel
+from get_data import notionData as data
+from txt_style import bcolors as text
+from write_excel import GenerateExcel as generate_excel
 import os
 
 
 
-
-data = notionData()
-generate_excel = GenerateExcel()
-text = bcolors()
-
-
-
-
-class getDate:  
-    def __init__(self) -> None:
-        pass
-    
-    
-    
+class getDate:
     def clearConsole(self):
         '''Clear console log'''
         if str(os.name) == 'nt':
@@ -32,7 +19,7 @@ class getDate:
     def getDate(self):
         '''Get date from console input'''
         self.clearConsole()
-    # Start date
+    # Input start date
         while True:
             try:
                 input_date = input(text.WARNING + 'INPUT_START_DATE: ' + text.ENDC)
@@ -54,7 +41,7 @@ class getDate:
                 self.errorWrongDate()
                 continue
         self.clearConsole()
-    # End date
+    # Input End date
         while True:
             try:
                 print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
