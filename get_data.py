@@ -10,9 +10,7 @@ import yaml
 
 
 try:
-    current_path: str = os.path.dirname(os.path.realpath(__file__))
-    config_path: str = os.path.join(current_path, 'config.yaml')
-    config: DotMap = DotMap(yaml.full_load(open(str(config_path), encoding='utf-8')))
+    config: DotMap = DotMap(yaml.full_load(open(str('config.yaml'), encoding='utf-8')))
 except FileNotFoundError:
     print(text.FAIL + 'Cannot find config.yaml file' + text.ENDC)
     input('Press Enter to continue..')
