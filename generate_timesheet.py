@@ -36,7 +36,7 @@ class getDate:
         start_date = self.inputStartDate()
         self.clearConsole()
     # End date
-        self.clearConsole()
+        end_date = self.clearConsole()
         return start_date, end_date
     
     
