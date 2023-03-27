@@ -1,4 +1,4 @@
-from dotmap import DotMap
+# from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
 from datetime import datetime
@@ -10,7 +10,7 @@ import yaml
 
 text = bcolors()
 try:
-    config = DotMap(yaml.full_load(open('config.yaml', encoding='utf-8')))
+    config = yaml.full_load(open('config.yaml', encoding='utf-8'))
 except FileNotFoundError:
     print(text.FAIL + 'Cannot find config.yaml file' + text.ENDC)
     input('Press Enter to continue..')
@@ -45,21 +45,21 @@ class setApi:
     
 
 
-    def setHeader(self, notion_version: str) -> dict:
+    def setHeader(self) -> dict:
         '''Set request header'''
         header: dict = {
-            'Authorization': 'Bearer ' + str(config.authorization),
+            'Authorization': 'Bearer ' + str(config['authorization']),
             'Content-Type': 'application/json',
-            'Notion-Version': notion_version
+            'Notion-Version': str(config['notion_version'])
         }
         # print(header)
         return header
 
 
 
-    def setBody(self, start_date: str, end_date: str, person_key: str, last_page=None) -> dict:
+    def setBody(self, start_date: str, end_date: str, person_key: str, last_page: str=None) -> dict:
         '''Set request body'''
-        body: dict= {
+        body: dict = {
             'filter': {
                 'and': [
                     {
@@ -134,10 +134,11 @@ class setApi:
         '''sending the request for get time sheet data'''
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
-            print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
-            print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
-            exit()
-        return DotMap(response.json())
+            raise ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json()['code']))
+            # print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
+            # print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
+            # exit()
+        return response.json()
 
 
 
@@ -166,7 +167,6 @@ class setApi:
                 ]
             }
         }
-        # print(body)
         return  body
 
 
@@ -183,46 +183,46 @@ class notionData:
         content = list()
         total_work_hours = float(0)
         for y in range(len(json)):
-            for i in range(len(json[y].results)):
+            for i in range(len(json[y]['results'])):
             # Check task title
-                if len(json[y].results[i].properties.Task.title) == 0:
+                if len(json[y]['results'][i]['properties']['Task']['title']) == 0:
                     title = None
                 else:
-                    title: str =  str(json[y].results[i].properties.Task.title[0].plain_text)   
-                     
+                    title: str =  str(json[y]['results'][i]['properties']['Task']['title'][0]['plain_text'])
+
             # Check start date
-                if json[y].results[i].properties.Date.date.start != None:
-                    start_date = datetime.strptime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0], '%Y-%m-%d')
+                if json[y]['results'][i]['properties']['Date']['date']['start'] != None:
+                    start_date = datetime.strptime(list(str(json[y]['results'][i]['properties']['Date']).split('T', 1))[0], '%Y-%m-%d')
                     start_date = str(start_date.strftime('%d/%m/%Y'))
                 else:
                     start_date = None
             
             # Check end date
-                if json[y].results[i].properties.Date.date.end != None:
-                    end_date = datetime.strptime(list(str(json[y].results[i].properties.Date.date.start).split('T', 1))[0], '%Y-%m-%d')
+                if json[y]['results'][i]['properties'].Date.date.end != None:
+                    end_date = datetime.strptime(list(str(json[y]['results'][i]['properties']['Date']['date']['start']).split('T', 1))[0], '%Y-%m-%d')
                     end_date = str(end_date.strftime('%d/%m/%Y'))
-                    # end_date: str = list(str(json[y].results[i].properties.Date.date.end).split('T', 1))[0]
+                    # end_date: str = list(str(json[y]['results'][i]['properties'].Date.date.end).split('T', 1))[0]
                 else:
                     end_date = None
             
             # Set work hours
-                work_hours = float(json[y].results[i].properties['Work hours per person'].formula.number)
+                work_hours = float(json[y]['results'][i]['properties']['Work hours per person']['formula']['number'])
             
             # Check tasks Status
-                if json[y].results[i].properties.Status.status != None:
-                    status: json = json[y].results[i].properties.Status.status.name
+                if json[y]['results'][i]['properties']['Status']['status'] != None:
+                    status: json = json[y]['results'][i]['properties']['Status']['status']['name']
                 else:
                     status = None
             
             # Check tasks Project
-                if len(json[y].results[i].properties.Project.multi_select) > 1:
-                    for x in range(len(json[y].results[i].properties.Project.multi_select)):
+                if len(json[y]['results'][i]['properties']['Project']['multi_select']) > 1:
+                    for x in range(len(json[y]['results'][i]['properties']['Project']['multi_select'])):
                         if x < 1:
-                            project: str = str(json[y].results[i].properties.Project.multi_select[x].name)
+                            project: str = str(json[y]['results'][i]['properties']['Project']['multi_select'][x]['name'])
                         else:
-                            project: str = str(project) + ', ' + str(json[y].results[i].properties.Project.multi_select[x].name)
-                elif 1 >= len(json[y].results[i].properties.Project.multi_select) > 0:
-                    project: str = str(json[y].results[i].properties.Project.multi_select[0].name)
+                            project: str = str(project) + ', ' + str(json[y]['results'][i]['properties']['Project']['multi_select'][x]['name'])
+                elif 1 >= len(json[y]['results'][i]['properties']['Project']['multi_select']) > 0:
+                    project: str = str(json[y]['results'][i]['properties']['Project']['multi_select'][0]['name'])
                 else:
                     project = None
             
@@ -245,7 +245,7 @@ class notionData:
             'data': content,
             'total_work_hours': total_work_hours
         }
-        return DotMap(timesheet_data)
+        return timesheet_data
     
     
 
@@ -266,7 +266,7 @@ class notionData:
             # When Notion's tasks more than 100 tasks
                 else:
                     data: dict = self.request.setBody(str(start_date.date()), str(end_date.date()), str(persons[person_name]), str(json_response['next_cursor']))
-                json_response: json = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
+                json_response: json = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config['notion_version'])), json_data=data)
                 boolean: bool = json_response['has_more']
                 lst_response.append(json_response)
                 i += 1
@@ -286,10 +286,10 @@ class notionData:
 
     def getPerson(self) -> dict:
         data = self.request.setBodyGetPerson()
-        json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config.notion_version)), json_data=data)
+        json_response = self.request.sendRequest(url=config.url, headers=self.request.setHeader(str(config['notion_version'])), json_data=data)
         persons = dict()
-        for data in tqdm(json_response.results[0].properties['Responsible person'].people, ncols=100, colour='cyan', desc='Getting person..'):
-            persons.update({data.name: data.id})
+        for data in tqdm(json_response['results'][0]['properties']['Responsible person']['people'], ncols=100, colour='cyan', desc='Getting person..'):
+            persons.update({data['name']: data['id']})
         # print(persons)
         return persons
 
