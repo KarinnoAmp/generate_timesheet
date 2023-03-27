@@ -36,7 +36,8 @@ class getDate:
         start_date = self.inputStartDate()
         self.clearConsole()
     # End date
-        end_date = self.clearConsole()
+        end_date = self.inputEndDate(start_date)
+        self.clearConsole()
         return start_date, end_date
     
     
@@ -66,8 +67,8 @@ class getDate:
         
         
     def inputEndDate(self, start_date: datetime=None) -> datetime:
-        # For unit testing
         if not start_date:
+            ''' For unit testing '''
             start_date = datetime(2022, 12, 18)
         while True:
             try:
@@ -89,6 +90,7 @@ class getDate:
                 else:
                     end_date = datetime.strptime(str(input_date), '%d-%m-%Y')
                 
+                ''' and not use for unit testing '''
                 if end_date < start_date:
                     self.clearConsole()
                     self.endDateGreater(start_date)
