@@ -16,14 +16,16 @@ class TestClearConsole(unittest.TestCase):
     @patch('os.system')
     def test_clear_console_windows(self, mock_os_system):
         os.name = 'nt'
-        getDate().clearConsole()
-        mock_os_system.assert_called_once_with('cls')
+        with patch('sys.stdout', new=StringIO()):
+            getDate().clearConsole()
+            mock_os_system.assert_called_once_with('cls')
     
     @patch('os.system')
     def test_clear_console_linux(self, mock_os_system):
         os.name = 'posix'
-        getDate().clearConsole()
-        mock_os_system.assert_called_once_with('clear')
+        with patch('sys.stdout', new=StringIO()):
+            getDate().clearConsole()
+            mock_os_system.assert_called_once_with('clear')
 
 class TestErrorMessage(unittest.TestCase):
     def setUp(self):
@@ -86,14 +88,52 @@ class TestInputDate(unittest.TestCase):
     def setUp(self):
         self.input_date = getDate()
     
-    def test_inputEndDate_valid(self):
-        with patch('builtins.input', return_value=datetime(2022, 12, 19).strftime('%d-%m-%Y')) as output:
-            self.input_date.inputEndDate()
-        self.assertEq(output.getvalue())
+    def test_inputStartDate_valid(self):
+        output_terminal: str = '\x1b[93mINPUT_START_DATE: \x1b[0m'
+        with patch('sys.stdout', new=io.StringIO()) as terminal:
+            with patch('sys.stdin', StringIO(datetime(2022, 12, 18).strftime('%d-%m-%Y'))):
+                date = self.input_date.inputStartDate()
+        self.assertEqual(terminal.getvalue(), output_terminal)
+        self.assertEqual(date, datetime(2022, 12, 18))
+        
+    def test_inputStartDate_invalidDate(self):
+        with patch('sys.stdout', new=StringIO()):
+            with patch('sys.stdin', StringIO('123')):
+                with self.assertRaises(EOFError):
+                    self.input_date.inputStartDate()
     
+    def test_inputEndDate_startDate_exit(self):
+        with patch('sys.stdout', new=StringIO()):
+            with patch('sys.stdin', StringIO('exit')):
+                with self.assertRaises(SystemExit):
+                    self.input_date.inputStartDate()
+    
+    def test_inputEndDate_valid(self):
+        output_terminal: str = '\x1b[92mStart date: 18-12-2022\x1b[0m\n\x1b[93mINPUT_END_DATE: \x1b[0m'
+        with patch('sys.stdout', new=io.StringIO()) as terminal:
+            with patch('sys.stdin', StringIO(datetime(2022, 12, 19).strftime('%d-%m-%Y'))):
+                date = self.input_date.inputEndDate()
+        self.assertEqual(terminal.getvalue(), output_terminal)
+        self.assertEqual(date, datetime(2022, 12, 19))
+    
+    def test_inputEndDate_invalidDate(self):
+        with patch('sys.stdout', new=StringIO()):
+            with patch('sys.stdin', StringIO('123')):
+                with self.assertRaises(EOFError):
+                    self.input_date.inputEndDate()
+    
+    def test_inputEndDate_startDate_greater_than_endDate(self):
+        with patch('sys.stdout', new=StringIO()):
+            with patch('sys.stdin', StringIO(datetime(2022, 12, 19).strftime('%d-%m-%Y'))):
+                with self.assertRaises(EOFError):
+                    self.input_date.inputEndDate(datetime(2023, 12, 19))
+    
+    def test_inputEndDate_endDate_exit(self):
+        with patch('sys.stdout', new=StringIO()):
+            with patch('sys.stdin', StringIO('exit')):
+                with self.assertRaises(SystemExit):
+                    self.input_date.inputEndDate()
+                    # self.input_date.inputEndDate()
+        
 if __name__ == '__main__':
-    # print(datetime(2023, 12, 19).strftime('%d-%m-%Y'))
     unittest.main()
-
-# \x1b[382 chars]-yyyy\n\x1b[91meg. \x1b[0m\x1b[96m\x1b[4m22-08-2022\x1b[0m\n\n
-# \x1b[382 chars]-yyyy\n\x1b[91meg. \x1b[0m\x1b[96m\x1b[4m22-08-2022\x1b[0m\n'
