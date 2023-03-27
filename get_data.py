@@ -1,4 +1,3 @@
-# from dotmap import DotMap
 from tqdm import tqdm
 from txt_style import bcolors
 from datetime import datetime
@@ -134,9 +133,6 @@ class setApi:
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
             raise(ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json()['code'])))
-            # print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
-            # print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
-            # exit()
         return response.json()
 
 
@@ -198,14 +194,14 @@ class notionData:
             
             # Check end date
                 if json[y]['results'][i]['properties'].Date.date.end != None:
-                    end_date = datetime.strptime(list(str(json[y]['results'][i]['properties']['Date']['date']['start']).split('T', 1))[0], '%Y-%m-%d')
-                    end_date = str(end_date.strftime('%d/%m/%Y'))
+                    end_date: datetime = datetime.strptime(list(str(json[y]['results'][i]['properties']['Date']['date']['start']).split('T', 1))[0], '%Y-%m-%d')
+                    end_date: str = str(end_date.strftime('%d/%m/%Y'))
                     # end_date: str = list(str(json[y]['results'][i]['properties'].Date.date.end).split('T', 1))[0]
                 else:
                     end_date = None
             
             # Set work hours
-                work_hours = float(json[y]['results'][i]['properties']['Work hours per person']['formula']['number'])
+                work_hours: float = float(json[y]['results'][i]['properties']['Work hours per person']['formula']['number'])
             
             # Check tasks Status
                 if json[y]['results'][i]['properties']['Status']['status'] != None:
