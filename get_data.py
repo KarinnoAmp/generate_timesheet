@@ -42,7 +42,6 @@ class mathCalculator:
 class setApi:
     def __init__(self) -> None:
         pass
-    
 
 
     def setHeader(self) -> dict:
@@ -134,7 +133,7 @@ class setApi:
         '''sending the request for get time sheet data'''
         response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
-            raise ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json()['code']))
+            raise(ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json()['code'])))
             # print(text.FAIL + (str('\n') * 2) + 'HTTP error status ' + str(response.status_code)) # Red color
             # print('message: ' + str(response.json()['code']) + text.ENDC) # Red color
             # exit()
