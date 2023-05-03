@@ -4,30 +4,20 @@ from txt_style import bcolors
 from write_excel import GenerateExcel
 import os
 
-
-
-
 data = notionData()
 generate_excel = GenerateExcel()
 text = bcolors()
 
-
-
-
 class getDate:
     def __init__(self) -> None:
         pass
-    
-    
-    
+
     def clearConsole(self):
         '''Clear console log'''
         if str(os.name) == 'nt':
             os.system('cls')
         else:
             os.system('clear')
-    
-    
     
     def getDate(self):
         '''Get date from console input'''
@@ -39,8 +29,6 @@ class getDate:
         end_date = self.inputEndDate(start_date)
         self.clearConsole()
         return start_date, end_date
-    
-    
     
     def inputStartDate(self) -> datetime:
         while True:
@@ -63,8 +51,7 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        return start_date
-        
+        return start_date  
         
     def inputEndDate(self, start_date: datetime=None) -> datetime:
         if not start_date:
@@ -101,9 +88,7 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        return end_date
-        
-        
+        return end_date 
         
     def helpText(self):
         self.clearConsole()
@@ -119,23 +104,17 @@ class getDate:
             text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
         )
     
-    
-    
     def errorWrongDate(self):
         print(text.FAIL +
             'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
             'Type "help" for hint command' + '\n'
         )
         
-        
-        
     def errorEmptyText(self):
         print(text.FAIL + 
             'ValueError: Please enter date or command' + text.ENDC + '\n' +
             'Type "help" for hint command' + '\n'
         )
-    
-    
     
     def endDateGreater(self, start_date):
         print(text.FAIL + 
@@ -149,9 +128,6 @@ class getDate:
         )
         input('Press Enter to continue')
         self.clearConsole()
-    
-    
-    
     
 if __name__ == '__main__':
     getDate().clearConsole()
