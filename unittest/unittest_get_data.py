@@ -52,6 +52,7 @@ class testSetApi(unittest.TestCase):
         self.setApi.setBody(start_date, end_date, person_key)
         with self.assertRaises(ConnectionError):
             self.setApi.sendRequest(url=url)
+    
     def test_sendRequest_withHeaderError(self):
         header: dict = {
             'Authorization': 'Bearer ffffffffffffffffffffffff',
@@ -68,7 +69,7 @@ class testSetApi(unittest.TestCase):
     def test_sendRequest_withBodyError(self):
         body: dict = {'hello': 123}
         with self.assertRaises(ConnectionError):
-            self.setApi.sendRequest(json=body)
+            self.setApi.sendRequest(json_data=body)
     
     def test_setBodyGetPerson(self):
         expect_result: dict = {
@@ -96,6 +97,39 @@ class testSetApi(unittest.TestCase):
             }
         }
         self.assertDictEqual(self.setApi.setBodyGetPerson(), expect_result) 
+    
+    def test_setBodyGetPerson_customDate_str(self):
+        start_date: str = '2022-11-01'
+        end_date: str = '2022-11-01'
+        expect_result: dict = {
+            'filter': {
+                'and': [
+                    {
+                        'property': 'Task type',
+                        'select': {
+                            'equals': 'Information'
+                        }
+                    },
+                    {
+                        'property': 'Date',
+                        'date': {
+                            'on_or_before': '2022-11-01'
+                        }
+                    },
+                    {
+                        'property': 'Date',
+                        'date': {
+                            'on_or_after': '2022-11-01'
+                        }
+                    }
+                ]
+            }
+        }
+        self.assertDictEqual(self.setApi.setBodyGetPerson(start_date=start_date, end_date=end_date), expect_result)
+    
+    def test_setBodyGetPerson_customDate_datetime(self):
+        with self.assertRaisesRegex(ValueError, expected_regex='start_date or end_date was in wrong type'):
+            self.setApi.setBodyGetPerson(start_date=datetime(2022, 11, 1), end_date=datetime(2022, 11, 1))
 
 class testNotionData(unittest.TestCase):
     def setUp(self) -> None:
@@ -138,6 +172,32 @@ class testNotionData(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.notionData.checkDateFormat(false_format)
     
+    def test_checkDateFormat_onlyDate(self):
+        false_format: str = '2023-05-03'
+        expect_result: str = '03/05/2023'
+        self.assertEqual(self.notionData.checkDateFormat(false_format), expect_result)
+    
+    def test_checkDateFormat_none(self):
+        none_format = None
+        none_str_format: str = 'None'
+        self.assertEqual(self.notionData.checkDateFormat(none_format), None)
+        self.assertEqual(self.notionData.checkDateFormat(none_str_format), None)
+    
+    def test_checkDateFormat_intArgument(self):
+        int_format = int(9)
+        with self.assertRaises(AttributeError):
+            self.notionData.checkDateFormat(int_format)
+    
+    def test_checkDateFormat_floatArgument(self):
+        float_format = float(9)
+        with self.assertRaises(AttributeError):
+            self.notionData.checkDateFormat(float_format)
+    
+    def test_checkDateFormat_datetimeArgument(self):
+        datetime_format = datetime(2023, 5, 3)
+        with self.assertRaises(AttributeError):
+            self.notionData.checkDateFormat(datetime_format)
+    
     def test_checkTaskProject(self):
         data_set: list = [
             {
@@ -159,7 +219,7 @@ class testNotionData(unittest.TestCase):
             {
             "id":"w]LR",
             "name":"TMP2",
-            "color":"yellow"
+            "color":"green"
             }
         ]
         expect_result: str = 'TMP1, TMP2'
@@ -180,7 +240,7 @@ class testNotionData(unittest.TestCase):
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks.json'))
         with open(expect_result_path, 'r') as expect_result_file:
             expect_result: dict = json.load(expect_result_file)
-        self.assertDictEqual(self.notionData.summaryTasks(json=json_data, person_name=person_name), expect_result)
+        self.assertDictEqual(self.notionData.summaryTasks(json_data=json_data, person_name=person_name), expect_result)
     
     def test_summaryTasks_withEmptyTasks(self):
         # Data set
@@ -203,7 +263,7 @@ class testNotionData(unittest.TestCase):
             'data': [],
             'total_work_hours': 0.0
         }
-        self.assertDictEqual(self.notionData.summaryTasks(json=json_data, person_name=person_name), expect_result)
+        self.assertDictEqual(self.notionData.summaryTasks(json_data=json_data, person_name=person_name), expect_result)
     
     def test_getTaskData(self):
         data_set = self.notionData.getTaskData(
