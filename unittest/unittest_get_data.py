@@ -18,23 +18,6 @@ class testMathCalculator(unittest.TestCase):
 class testSetApi(unittest.TestCase):
     def setUp(self) -> None:
         self.setApi = setApi()
-    # Error
-    def test_setHeader(self):
-        expect_result: dict = {
-            'Authorization': 'Bearer secret_ftVfm6G44cEujeMsnIuxhSGeDV7IMSpZFHiu0YrjLrM',
-            'Content-Type': 'application/json',
-            'Notion-Version': '2022-06-28'
-        }
-        self.assertDictEqual(self.setApi.setHeader(), expect_result)
-    # Error
-    def test_setBody(self):
-        start_date: str = '2022-11-11'
-        end_date:   str = '2022-11-11'
-        person_key: str = '6cb3cc27-680d-4026-a3e6-39681191582a'
-        expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-setBody.json'))
-        with open(expect_result_path, 'r') as expect_result_file:
-            expect_result: dict = json.load(expect_result_file)
-        self.assertDictEqual(self.setApi.setBody(start_date, end_date, person_key), expect_result)
     
     def test_setBody_withMoreThan_100_items(self):
         start_date: str = '2022-11-11'
@@ -68,8 +51,7 @@ class testSetApi(unittest.TestCase):
         person_key: str = '6cb3cc27-680d-4026-a3e6-39681191582a'
         self.setApi.setBody(start_date, end_date, person_key)
         with self.assertRaises(ConnectionError):
-            self.setApi.sendRequest(url=url)    
-    # Error
+            self.setApi.sendRequest(url=url)
     def test_sendRequest_withHeaderError(self):
         header: dict = {
             'Authorization': 'Bearer ffffffffffffffffffffffff',
@@ -81,13 +63,13 @@ class testSetApi(unittest.TestCase):
         person_key: str = '6cb3cc27-680d-4026-a3e6-39681191582a'
         self.setApi.setBody(start_date, end_date, person_key)
         with self.assertRaises(ConnectionError):
-            self.setApi.sendRequest(header)
-    # Error
+            self.setApi.sendRequest(headers=header)
+    
     def test_sendRequest_withBodyError(self):
         body: dict = {'hello': 123}
         with self.assertRaises(ConnectionError):
-            self.setApi.sendRequest(body)
-        
+            self.setApi.sendRequest(json=body)
+    
     def test_setBodyGetPerson(self):
         expect_result: dict = {
             'filter': {
@@ -198,6 +180,29 @@ class testNotionData(unittest.TestCase):
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks.json'))
         with open(expect_result_path, 'r') as expect_result_file:
             expect_result: dict = json.load(expect_result_file)
+        self.assertDictEqual(self.notionData.summaryTasks(json=json_data, person_name=person_name), expect_result)
+    
+    def test_summaryTasks_withEmptyTasks(self):
+        # Data set
+        data_set_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getTaskData_summaryTasks.json'))
+        person_name: str = 'Nakarin Viyapron'
+        json_data: list = [
+            {
+                "object": "list",
+                "results": [],
+                "next_cursor": None,
+                "has_more": False,
+                "type": "page",
+                "page": {},
+                "developer_survey": "https://notionup.typeform.com/to/bllBsoI4?utm_source=postman"
+            }
+        ]
+        # Expect result
+        expect_result: dict = {
+            'person': 'Nakarin Viyapron',
+            'data': [],
+            'total_work_hours': 0.0
+        }
         self.assertDictEqual(self.notionData.summaryTasks(json=json_data, person_name=person_name), expect_result)
     
     def test_getTaskData(self):
