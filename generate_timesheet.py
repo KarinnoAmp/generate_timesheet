@@ -7,6 +7,14 @@ import time
 
 
 
+
+data = notionData()
+generate_excel = GenerateExcel()
+text = bcolors()
+
+
+
+
 class getDate:
     def __init__(self) -> None:
         pass
@@ -27,12 +35,17 @@ class getDate:
     def getDate(self, start_date=None, end_date=None) -> datetime:
         '''Get date from console input'''
         self.clearConsole()
-        # if start_date != None and end_date != None:
-        #     start_date = datetime.strptime(str(start_date), '%d-%m-%Y')
-        #     end_date = datetime.strptime(str(end_date), '%d-%m-%Y')
-        # else:
-        # Input start date
-        retry_attempt = 0
+    # Start date
+        start_date = self.inputStartDate()
+        self.clearConsole()
+    # End date
+        end_date = self.inputEndDate(start_date)
+        self.clearConsole()
+        return start_date, end_date
+    
+    
+    
+    def inputStartDate(self) -> datetime:
         while True:
             try:
                 # input start date
@@ -75,9 +88,14 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        self.clearConsole()
-        # Input End date
-        while True and retry_attempt < 3:
+        return start_date
+        
+        
+    def inputEndDate(self, start_date: datetime=None) -> datetime:
+        if not start_date:
+            ''' For unit testing '''
+            start_date = datetime(2022, 12, 18)
+        while True:
             try:
                 # show start date
                 print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
@@ -102,7 +120,8 @@ class getDate:
                     continue
                 else:
                     end_date = datetime.strptime(str(input_date), '%d-%m-%Y')
-                # type end date before start date
+                
+                ''' and not use for unit testing '''
                 if end_date < start_date:
                     self.clearConsole()
                     self.endDateGreater(start_date)
@@ -114,52 +133,51 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        self.clearConsole()
-        return start_date, end_date
-    
-    
-    
-    def helpText(self) -> None:
+        return end_date
+        
+        
+        
+    def helpText(self):
         self.clearConsole()
         print(text.HEADER + 'NoTime' + text.ENDC + '\n' +
-              'Using with Notion time sheet recorded database to generating Excel time sheet' + '\n'*2 +
-              text.HEADER + '*** Command ***' + text.ENDC + '\n' +
-              '- ' + text.OKCYAN + text.UNDERLINE + 'help' + text.ENDC + '  : Showing help command' + '\n' +
-              '- ' + text.OKCYAN + text.UNDERLINE + 'exit' + text.ENDC + '  : Exit the executing'   + '\n' +
-              '- ' + text.OKCYAN + text.UNDERLINE + 'clear' + text.ENDC + ' : Clear input start date (Only useable while INPUT END DATE)' + '\n'*2 +
-              text.HEADER + '*** Support ***' + text.ENDC + '\n' +
-              'date format' + '\n' + 
-              'dd-mm-yyyy' + '\n' +
-              text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
+            'Using with Notion time sheet recorded database to generating Excel time sheet' + '\n'*2 +
+            text.HEADER + '*** Command ***' + text.ENDC + '\n' +
+            '- ' + text.OKCYAN + text.UNDERLINE + 'help' + text.ENDC + '  : Showing help command' + '\n' +
+            '- ' + text.OKCYAN + text.UNDERLINE + 'exit' + text.ENDC + '  : Exit the executing'   + '\n' +
+            '- ' + text.OKCYAN + text.UNDERLINE + 'clear' + text.ENDC + ' : Clear input start date (Only useable while INPUT END DATE)' + '\n'*2 +
+            text.HEADER + '*** Support ***' + text.ENDC + '\n' +
+            'date format' + '\n' + 
+            'dd-mm-yyyy' + '\n' +
+            text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
         )
     
     
     
     def errorWrongDate(self) -> None:
         print(text.FAIL +
-              'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
-              'Type "help" for hint command' + '\n'
+            'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
+            'Type "help" for hint command' + '\n'
         )
         
         
         
     def errorEmptyText(self) -> None:
         print(text.FAIL + 
-              'ValueError: Please enter date or command' + text.ENDC + '\n'
-              'Type "help" for hint command' + '\n'
+            'ValueError: Please enter date or command' + text.ENDC + '\n' +
+            'Type "help" for hint command' + '\n'
         )
     
     
     
     def endDateGreater(self, start_date) -> None:
         print(text.FAIL + 
-              'ValueError: End date should greater than ' + 
-              str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
+            'ValueError: End date should greater than ' + 
+            str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
         )
     
     def showCompleteMessage(self) -> None:
         print(text.OKGREEN +
-              'Generate timesheet completed!!' + text.ENDC + '\n'
+            'Generate timesheet completed!!' + text.ENDC + '\n'
         )
         input('Press Enter to continue')
         self.clearConsole()
