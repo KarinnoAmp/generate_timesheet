@@ -1,7 +1,7 @@
 from datetime import datetime
-from get_data import notionData as data
-from txt_style import bcolors as text
-from write_excel import GenerateExcel as generate_excel
+from get_data import notionData
+from txt_style import bcolors
+from write_excel import GenerateExcel
 import os
 
 data = notionData()
@@ -14,10 +14,8 @@ class getDate:
 
     def clearConsole(self):
         '''Clear console log'''
-        # windows os
         if str(os.name) == 'nt':
             os.system('cls')
-        # other os
         else:
             os.system('clear')
     
@@ -35,42 +33,20 @@ class getDate:
     def inputStartDate(self) -> datetime:
         while True:
             try:
-                # input start date
-                input_date: str = input(text.WARNING + 'INPUT_START_DATE: ' + text.ENDC)
-                # type help
+                input_date = input(text.WARNING + 'INPUT_START_DATE: ' + text.ENDC)
                 if str(input_date.upper()) == 'HELP':
                     self.helpText()
                     continue
-                # type exit
                 elif str(input_date.upper()) == 'EXIT':
                     self.clearConsole()
                     exit()
-                # type none
                 elif str(input_date) == str():
                     self.clearConsole()
                     self.errorEmptyText()
                     continue
-                # type test
-                elif str(input_date.upper()) == 'TEST' and retry_attempt < 3:
-                    self.clearConsole()
-                    print('Please input ' + text.UNDERLINE + text.HEADER + '"test"' + text.ENDC + ' again ' + text.FAIL + str(3-retry_attempt) + text.ENDC + ' time to entered test mode')
-                    retry_attempt += 1
-                    continue
-                # when type test 3 times
-                elif retry_attempt >= 3 and start_date != None and end_date != None:
-                    start_date = datetime.strptime(str(start_date), '%d-%m-%Y')
-                    end_date = datetime.strptime(str(end_date), '%d-%m-%Y')
-                    self.clearConsole()
-                    print(text.OKCYAN + 'Entering test mode...' + text.ENDC)
-                    print('start date : ' + str(start_date))
-                    print('end date   : ' + str(end_date))
-                    time.sleep(3)
-                    break
-                # true date format
                 else:
                     start_date = datetime.strptime(str(input_date), '%d-%m-%Y')
-                    break
-            # type wrong date format
+                break
             except ValueError:
                 self.clearConsole()
                 self.errorWrongDate()
@@ -83,23 +59,17 @@ class getDate:
             start_date = datetime(2022, 12, 18)
         while True:
             try:
-                # show start date
                 print(text.OKGREEN + 'Start date: ' + str(start_date.strftime('%d-%m-%Y')) + text.ENDC)
-                # input end date
-                input_date: str = input(text.WARNING + 'INPUT_END_DATE: ' + text.ENDC)
-                # type help
+                input_date = input(text.WARNING + 'INPUT_END_DATE: ' + text.ENDC)
                 if str(input_date.upper()) == 'HELP':
                     self.helpText()
                     continue
-                # type clear
                 elif str(input_date.upper()) == 'CLEAR':
                     start_date, end_date = self.getDate()
                     break
-                # type exit
                 elif str(input_date.upper()) == 'EXIT':
                     self.clearConsole()
                     exit()
-                # type none
                 elif str(input_date) == str():
                     self.clearConsole()
                     self.errorEmptyText()
@@ -114,7 +84,6 @@ class getDate:
                     continue
                 else:
                     break
-            # type wrong date format
             except ValueError:
                 self.clearConsole()
                 self.errorWrongDate()
@@ -141,15 +110,11 @@ class getDate:
             'Type "help" for hint command' + '\n'
         )
         
-        
-        
     def errorEmptyText(self):
         print(text.FAIL + 
             'ValueError: Please enter date or command' + text.ENDC + '\n' +
             'Type "help" for hint command' + '\n'
         )
-    
-    
     
     def endDateGreater(self, start_date):
         print(text.FAIL + 
@@ -157,7 +122,7 @@ class getDate:
             str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
         )
     
-    def showCompleteMessage(self) -> None:
+    def showCompleteMessage(self):
         print(text.OKGREEN +
             'Generate timesheet completed!!' + text.ENDC + '\n'
         )
@@ -165,7 +130,8 @@ class getDate:
         self.clearConsole()
     
 if __name__ == '__main__':
-    startDate, endDate = getDate().getDate('01-11-2022', '30-11-2022')
-    generate_excel().write_excel(data().getTasksData(startDate, endDate))
+    getDate().clearConsole()
+    startDate, endDate = getDate().getDate()
+    generate_excel.write_excel(data.getTasksData(startDate, endDate))
     getDate().clearConsole()
     getDate().showCompleteMessage()
