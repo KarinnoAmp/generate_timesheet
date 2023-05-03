@@ -105,23 +105,24 @@ class setApi:
                 }
             ]
         }
-        if last_page != None:
+        if last_page:
             body.update({'start_cursor': str(last_page)})
         self.BODY = body
         return body
 
-    def sendRequest(self, url=None, headers=None, json=None) -> json:
+    def sendRequest(self, url=None, headers=None, json_data=None) -> json:
         '''sending the request for get time sheet data'''
         url = url or self.URL
         headers = headers or self.HEADER
-        json = json or self.BODY
-        # print(headers)
-        response = requests.post(url=url, headers=headers, json=json)
+        json_data = json_data or self.BODY
+        response = requests.post(url=url, headers=headers, json=json_data)
         if int(response.status_code) != 200:
-            raise(ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json()['code'])))
+            raise(ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json())))
         return response.json()
 
-    def setBodyGetPerson(self, start_date='2022-11-01', end_date='2022-11-01') -> dict:
+    def setBodyGetPerson(self, start_date: str = '2022-11-01', end_date: str = '2022-11-01') -> dict:
+        if not isinstance(start_date, str) or not isinstance(end_date, str):
+            raise ValueError('start_date or end_date was in wrong type')
         body: dict = {
             'filter': {
                 'and': [
@@ -155,13 +156,14 @@ class notionData:
         self.math = mathCalculator()
     
     def checkTaskTitle(self, task_title: list) -> str:
-        if len(task_title) == 0:
+        if not task_title:
             return None
         else:
             return str(task_title[0]['plain_text'])
     
     def checkDateFormat(self, date: str) -> str:
-        if date != None:
+        '''Check if date exists and format it to '%d/%m/%Y'.'''
+        if date and date != 'None':
             date_formatted = datetime.strptime(date.split('T', 1)[0], '%Y-%m-%d')
             date_formatted = str(date_formatted.strftime('%d/%m/%Y'))
         else:
@@ -181,17 +183,19 @@ class notionData:
             project = None
         return project
     
-    def summaryTasks(self, json: list, person_name: str) -> object:
+    def summaryTasks(self, json_data: list, person_name: str) -> object:
         '''get list of tasks in notion'''
         content = list()
         total_work_hours = float(0)
-        for data in json:
+        for data in json_data:
+            if not data['results']:
+                break
             for result in data['results']:
-            # Set data to dictionary
+                # Set data to dictionary
                 dict = {
                     'title': self.checkTaskTitle(result['properties']['Task']['title']),
-                    'start_date': self.checkDateFormat(str(result['properties']['Date']['date']['start'])),
-                    'end_date': self.checkDateFormat(str(result['properties']['Date']['date']['end'])),
+                    'start_date': self.checkDateFormat(result['properties']['Date']['date']['start']),
+                    'end_date': self.checkDateFormat(result['properties']['Date']['date']['end']),
                     'total_work_hours': float(result['properties']['Work hours per person']['formula']['number']),
                     'status': result['properties']['Status']['status']['name'],
                     'project': self.checkTaskProject(result['properties']['Project']['multi_select'])
@@ -246,14 +250,14 @@ class notionData:
             ncols=100, colour='cyan', desc='Getting person..'
         ):
             persons.update({data['name']: data['id']})
-        # print(persons)
         return persons
 
 if __name__ == '__main__':
-    start_date: str= '01-11-2022'
-    end_date: str = '01-11-2022'
+    start_date: str= '03-05-2023'
+    end_date: str = '03-05-2023'
     timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
     json_object: dict = json.dumps(timesheet_record, indent=4)
     with open("export_data.json", "w") as outfile:
         outfile.write(json_object)
-    # notionData().getPerson()
+    # print(notionData().getPerson())
+    
