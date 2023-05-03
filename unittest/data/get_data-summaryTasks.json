@@ -1,0 +1,1398 @@
+{
+    "person":"Nakarin Viyapron",
+    "data":[
+       {
+          "title":"TMP Standup Meeting",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Meeting with team user for discuss about UAT session approval workflow",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing Jira Issue TTP1-153",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing approval flow multi-city On-Behalf [1]",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Review TMP phase 2 manual test script",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"01/09/2022",
+          "end_date":"01/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing Approval Flow Multi-city on-half",
+          "start_date":"02/09/2022",
+          "end_date":"02/09/2022",
+          "total_work_hours":7.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss with P\u2019Oum about defect case432",
+          "start_date":"05/09/2022",
+          "end_date":"05/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about Notion as logging timesheet",
+          "start_date":"05/09/2022",
+          "end_date":"05/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing Approval flow multi-city",
+          "start_date":"05/09/2022",
+          "end_date":"05/09/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing Approval flow multi-city on-behalf [1]",
+          "start_date":"06/09/2022",
+          "end_date":"06/09/2022",
+          "total_work_hours":2.25,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing Approval flow multi-city on-behalf [2]",
+          "start_date":"06/09/2022",
+          "end_date":"06/09/2022",
+          "total_work_hours":4.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about detail variable public on Github",
+          "start_date":"08/09/2022",
+          "end_date":"08/09/2022",
+          "total_work_hours":0.25,
+          "status":"Done",
+          "project":"AIS_ADMD"
+       },
+       {
+          "title":"Discuss about notion tools",
+          "start_date":"08/09/2022",
+          "end_date":"08/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Testing defect in Jira",
+          "start_date":"08/09/2022",
+          "end_date":"08/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"08/09/2022",
+          "end_date":"08/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Smoke on UAT Site [1]",
+          "start_date":"09/09/2022",
+          "end_date":"09/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Smoke on UAT Site [2]",
+          "start_date":"09/09/2022",
+          "end_date":"09/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Automate Regression Check",
+          "start_date":"12/09/2022",
+          "end_date":"12/09/2022",
+          "total_work_hours":7.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Summary UAT session with team and quick discuss about issue",
+          "start_date":"12/09/2022",
+          "end_date":"12/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"13/09/2022",
+          "end_date":"13/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Editing Automate test script",
+          "start_date":"13/09/2022",
+          "end_date":"13/09/2022",
+          "total_work_hours":4.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about defect on UAT with P\u2019Aob",
+          "start_date":"13/09/2022",
+          "end_date":"13/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Run automate testing on TMP Phase 2",
+          "start_date":"14/09/2022",
+          "end_date":"14/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Discuss with team about UAT issue and check impact for new deploy version 2.0.0 on UAT",
+          "start_date":"14/09/2022",
+          "end_date":"14/09/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss About Phase2 Plan QA",
+          "start_date":"14/09/2022",
+          "end_date":"14/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Smoke Test On UAT Site",
+          "start_date":"14/09/2022",
+          "end_date":"14/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"15/09/2022",
+          "end_date":"15/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Smoke Test on UAT Site",
+          "start_date":"15/09/2022",
+          "end_date":"15/09/2022",
+          "total_work_hours":6.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"15/09/2022",
+          "end_date":"15/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Smoke Test On UAT Site",
+          "start_date":"16/09/2022",
+          "end_date":"16/09/2022",
+          "total_work_hours":8.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Check UAT issue with team about scene approval (error after approve and data invalid in database)",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Recheck new automate keywords ",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Review Pruksa.Clickzy master plan",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":0.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing keyword of automate test TMP",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Review Pruksa.Clickzy master plan",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Updating automate keywords for TMP Phase2",
+          "start_date":"19/09/2022",
+          "end_date":"19/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"20/09/2022",
+          "end_date":"20/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Editing Automate test TMP Phase 2",
+          "start_date":"20/09/2022",
+          "end_date":"20/09/2022",
+          "total_work_hours":2.5,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Discuss with DevOPS about CI/CD problem",
+          "start_date":"20/09/2022",
+          "end_date":"20/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing BA Tasks & Defeact on Jira",
+          "start_date":"20/09/2022",
+          "end_date":"20/09/2022",
+          "total_work_hours":3.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"20/09/2022",
+          "end_date":"20/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about automate test",
+          "start_date":"21/09/2022",
+          "end_date":"21/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Testing BA Tasks on Jira",
+          "start_date":"21/09/2022",
+          "end_date":"21/09/2022",
+          "total_work_hours":2.75,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Review plan and scope project",
+          "start_date":"21/09/2022",
+          "end_date":"21/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Testing BA Tasks on Jira",
+          "start_date":"21/09/2022",
+          "end_date":"21/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about plan deploy for TMP phase 1 and phase 2 with team QA",
+          "start_date":"21/09/2022",
+          "end_date":"21/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP2, TMP1"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"22/09/2022",
+          "end_date":"22/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Regression testing approval flow",
+          "start_date":"22/09/2022",
+          "end_date":"22/09/2022",
+          "total_work_hours":5.25,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Update and discuss plan phase 1 and phase 2 with team QA",
+          "start_date":"22/09/2022",
+          "end_date":"22/09/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP2, TMP1"
+       },
+       {
+          "title":"Discuss query for passenger list on on-behalf select passenger page",
+          "start_date":"22/09/2022",
+          "end_date":"22/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about approval flow regression testing",
+          "start_date":"23/09/2022",
+          "end_date":"23/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Briefing Web and Email notification, and Approval budget",
+          "start_date":"23/09/2022",
+          "end_date":"23/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Regression testing approval flow",
+          "start_date":"23/09/2022",
+          "end_date":"23/09/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"23/09/2022",
+          "end_date":"23/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Approval flow regression testing [1]",
+          "start_date":"26/09/2022",
+          "end_date":"26/09/2022",
+          "total_work_hours":2.25,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Approval flow regression testing [2]",
+          "start_date":"26/09/2022",
+          "end_date":"26/09/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Meeting about discussion scope of work (ERP) with Teibto",
+          "start_date":"27/09/2022",
+          "end_date":"27/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"List release note TMP version 2.1.0",
+          "start_date":"27/09/2022",
+          "end_date":"27/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Review Manual Test Script P.2",
+          "start_date":"27/09/2022",
+          "end_date":"27/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"27/09/2022",
+          "end_date":"27/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"List knowledge for transfer to P\u2019Note/P\u2019Oil",
+          "start_date":"28/09/2022",
+          "end_date":"28/09/2022",
+          "total_work_hours":2.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"[Clickzy] Stand up meeting",
+          "start_date":"28/09/2022",
+          "end_date":"28/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss requirement update",
+          "start_date":"28/09/2022",
+          "end_date":"28/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Smoke test on UAT Site",
+          "start_date":"28/09/2022",
+          "end_date":"28/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Discuss about Amadeus queue",
+          "start_date":"28/09/2022",
+          "end_date":"28/09/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"TMP Approval Workflow UAT: Final Round (Re-UAT)",
+          "start_date":"29/09/2022",
+          "end_date":"29/09/2022",
+          "total_work_hours":2.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Editing Automate keywords",
+          "start_date":"29/09/2022",
+          "end_date":"29/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Editing Automate keywords",
+          "start_date":"29/09/2022",
+          "end_date":"29/09/2022",
+          "total_work_hours":2.5,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Standup Meeting with Gig Tech worker",
+          "start_date":"29/09/2022",
+          "end_date":"29/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Editing Automate test script",
+          "start_date":"30/09/2022",
+          "end_date":"30/09/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Editing Automate test script",
+          "start_date":"30/09/2022",
+          "end_date":"30/09/2022",
+          "total_work_hours":6.5,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Clickzy Discussion Update requirement",
+          "start_date":"30/09/2022",
+          "end_date":"30/09/2022",
+          "total_work_hours":2.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Review config preparing deployment TMP 2.1.0",
+          "start_date":"30/09/2022",
+          "end_date":"30/09/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Deploy to Production site (go live)",
+          "start_date":"30/09/2022",
+          "end_date":"30/09/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP1"
+       },
+       {
+          "title":"Recheck Automate test script",
+          "start_date":"03/10/2022",
+          "end_date":"03/10/2022",
+          "total_work_hours":3.5,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Clickzy : Grooming Flow up",
+          "start_date":"03/10/2022",
+          "end_date":"03/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy: Discussion Update requirement",
+          "start_date":"03/10/2022",
+          "end_date":"03/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about project and plan about QA task",
+          "start_date":"03/10/2022",
+          "end_date":"03/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing Automate test script",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Meeting with Omnify",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Meeting with Alexis",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing automate test",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Discuss about planning with BA",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Investigate how to use automate in Clickzy web",
+          "start_date":"04/10/2022",
+          "end_date":"04/10/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Researching automate test in Clickzy website",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Flow up",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy Master Plan with Omnyfy",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Create result of Clickzy business flow",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy: Discussion Update requirement",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research automate test knowledge for used in Clickzy website",
+          "start_date":"05/10/2022",
+          "end_date":"05/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research automate test knowledge for used in Clickzy website",
+          "start_date":"06/10/2022",
+          "end_date":"06/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"06/10/2022",
+          "end_date":"06/10/2022",
+          "total_work_hours":0.25,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy Master Plan with Omnyfy",
+          "start_date":"06/10/2022",
+          "end_date":"06/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Training with Jeffy",
+          "start_date":"06/10/2022",
+          "end_date":"06/10/2022",
+          "total_work_hours":1.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research automate test tools",
+          "start_date":"06/10/2022",
+          "end_date":"06/10/2022",
+          "total_work_hours":4.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Researching automate test for using in Clickzy E2E scene",
+          "start_date":"07/10/2022",
+          "end_date":"07/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Flow up",
+          "start_date":"07/10/2022",
+          "end_date":"07/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy Training (Cart Price Rules, Promotions and Elastic Search)",
+          "start_date":"07/10/2022",
+          "end_date":"07/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing Clickzy testing workflow",
+          "start_date":"07/10/2022",
+          "end_date":"07/10/2022",
+          "total_work_hours":3.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research automate testing tools",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy: Stripe discussion",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about return and refund\u00a0",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Sign in/ Sing Out / Product Internal Demo and test understanding",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Review and Q&A testing flow with BA",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing testing flow",
+          "start_date":"10/10/2022",
+          "end_date":"10/10/2022",
+          "total_work_hours":2.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"OmnyfyxSynergy: Vimut integration consultation",
+          "start_date":"11/10/2022",
+          "end_date":"11/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"11/10/2022",
+          "end_date":"11/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"11/10/2022",
+          "end_date":"11/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing Manual test script E2E",
+          "start_date":"11/10/2022",
+          "end_date":"11/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy Training with Jeffrey",
+          "start_date":"12/10/2022",
+          "end_date":"12/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"12/10/2022",
+          "end_date":"12/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Sprint demo with Omnyfy",
+          "start_date":"12/10/2022",
+          "end_date":"12/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Creating manual test script E2E vendor sign in/sign up",
+          "start_date":"12/10/2022",
+          "end_date":"12/10/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Creating manual test script add digital product",
+          "start_date":"17/10/2022",
+          "end_date":"17/10/2022",
+          "total_work_hours":4.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"17/10/2022",
+          "end_date":"17/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Vimut: Discuss integration flow Omnyfy & Vimut",
+          "start_date":"17/10/2022",
+          "end_date":"17/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing manual test script",
+          "start_date":"17/10/2022",
+          "end_date":"17/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"List improvement result of testing scene add product\u00a0",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Testing E2E scene in customer",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss E2E issue with BA",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research Test strategy",
+          "start_date":"18/10/2022",
+          "end_date":"18/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Testing add product to cart",
+          "start_date":"19/10/2022",
+          "end_date":"19/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"19/10/2022",
+          "end_date":"19/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Investigate testing strategy",
+          "start_date":"19/10/2022",
+          "end_date":"19/10/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Investigate testing strategy",
+          "start_date":"19/10/2022",
+          "end_date":"19/10/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing test strategy presentation",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about demo session",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Meeting with Dong",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":1.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about demo session",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Sprint 2 Demo ",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Research testing strategy",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Vimut : Presenting the current process flow",
+          "start_date":"20/10/2022",
+          "end_date":"20/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Researching testing strategy",
+          "start_date":"21/10/2022",
+          "end_date":"21/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"21/10/2022",
+          "end_date":"21/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Researching testing strategy",
+          "start_date":"21/10/2022",
+          "end_date":"21/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing automate test script",
+          "start_date":"21/10/2022",
+          "end_date":"21/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing automate test script",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Meet with dong",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about planning",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Researching testing strategy",
+          "start_date":"25/10/2022",
+          "end_date":"25/10/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing testing strategy",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Support import product via csv file",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing Testing strategy [1]",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about tasks in Sprint 3 with BA",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":1.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing Testing strategy [2]",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":2.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Meeting integration workflow with Vimut ",
+          "start_date":"26/10/2022",
+          "end_date":"26/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Editing testing strategy",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"QA Standup Meeting",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Meeting with Dong",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss with team about group keyword (while)",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"Other"
+       },
+       {
+          "title":"Meeting with management team",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Translating frontend label",
+          "start_date":"27/10/2022",
+          "end_date":"27/10/2022",
+          "total_work_hours":4.25,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Translating frontend label",
+          "start_date":"28/10/2022",
+          "end_date":"28/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"28/10/2022",
+          "end_date":"28/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about keyword verify point and load testing",
+          "start_date":"28/10/2022",
+          "end_date":"28/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP2"
+       },
+       {
+          "title":"Translating frontend label",
+          "start_date":"28/10/2022",
+          "end_date":"28/10/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss about solution create automate test script and manual test script",
+          "start_date":"28/10/2022",
+          "end_date":"28/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Translating frontend label",
+          "start_date":"31/10/2022",
+          "end_date":"31/10/2022",
+          "total_work_hours":3.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Clickzy : Grooming Follow-up",
+          "start_date":"31/10/2022",
+          "end_date":"31/10/2022",
+          "total_work_hours":0.5,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Translating frontend label",
+          "start_date":"31/10/2022",
+          "end_date":"31/10/2022",
+          "total_work_hours":5.0,
+          "status":"Done",
+          "project":"P_Clickzy"
+       },
+       {
+          "title":"Discuss tag for testing on each site",
+          "start_date":"31/10/2022",
+          "end_date":"31/10/2022",
+          "total_work_hours":0.75,
+          "status":"Done",
+          "project":"TMP2, TMP1"
+       },
+       {
+          "title":"Discuss about environment testing and extension for Robotframework",
+          "start_date":"31/10/2022",
+          "end_date":"31/10/2022",
+          "total_work_hours":1.0,
+          "status":"Done",
+          "project":"Other"
+       }
+    ],
+    "total_work_hours":296.75
+ }
