@@ -3,25 +3,16 @@ from get_data import notionData as data
 from txt_style import bcolors as text
 from write_excel import GenerateExcel as generate_excel
 import os
-import time
-
-
-
 
 data = notionData()
 generate_excel = GenerateExcel()
 text = bcolors()
 
-
-
-
 class getDate:
     def __init__(self) -> None:
         pass
-    
-    
-    
-    def clearConsole(self) -> None:
+
+    def clearConsole(self):
         '''Clear console log'''
         # windows os
         if str(os.name) == 'nt':
@@ -30,9 +21,7 @@ class getDate:
         else:
             os.system('clear')
     
-    
-    
-    def getDate(self, start_date=None, end_date=None) -> datetime:
+    def getDate(self):
         '''Get date from console input'''
         self.clearConsole()
     # Start date
@@ -42,8 +31,6 @@ class getDate:
         end_date = self.inputEndDate(start_date)
         self.clearConsole()
         return start_date, end_date
-    
-    
     
     def inputStartDate(self) -> datetime:
         while True:
@@ -88,8 +75,7 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        return start_date
-        
+        return start_date  
         
     def inputEndDate(self, start_date: datetime=None) -> datetime:
         if not start_date:
@@ -133,9 +119,7 @@ class getDate:
                 self.clearConsole()
                 self.errorWrongDate()
                 continue
-        return end_date
-        
-        
+        return end_date 
         
     def helpText(self):
         self.clearConsole()
@@ -151,9 +135,7 @@ class getDate:
             text.FAIL + 'eg. ' + text.ENDC + text.OKCYAN + text.UNDERLINE + '22-08-2022' + text.ENDC + '\n'
         )
     
-    
-    
-    def errorWrongDate(self) -> None:
+    def errorWrongDate(self):
         print(text.FAIL +
             'ValueError: Wrong date format or unsupported command' + text.ENDC + '\n' +
             'Type "help" for hint command' + '\n'
@@ -161,7 +143,7 @@ class getDate:
         
         
         
-    def errorEmptyText(self) -> None:
+    def errorEmptyText(self):
         print(text.FAIL + 
             'ValueError: Please enter date or command' + text.ENDC + '\n' +
             'Type "help" for hint command' + '\n'
@@ -169,7 +151,7 @@ class getDate:
     
     
     
-    def endDateGreater(self, start_date) -> None:
+    def endDateGreater(self, start_date):
         print(text.FAIL + 
             'ValueError: End date should greater than ' + 
             str(start_date.strftime('%d-%m-%Y')) + text.ENDC + '\n'
@@ -181,9 +163,6 @@ class getDate:
         )
         input('Press Enter to continue')
         self.clearConsole()
-    
-    
-    
     
 if __name__ == '__main__':
     startDate, endDate = getDate().getDate('01-11-2022', '30-11-2022')
