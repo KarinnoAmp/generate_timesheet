@@ -132,6 +132,6 @@ class getDate:
 if __name__ == '__main__':
     getDate().clearConsole()
     startDate, endDate = getDate().getDate()
-    generate_excel.write_excel(data.getTasksData(startDate, endDate))
+    generate_excel.write_excel(data.getAllTasksData(startDate, endDate))
     getDate().clearConsole()
     getDate().showCompleteMessage()
