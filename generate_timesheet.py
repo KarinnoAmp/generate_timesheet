@@ -22,10 +22,8 @@ class getDate:
     def getDate(self):
         '''Get date from console input'''
         self.clearConsole()
-    # Start date
         start_date = self.inputStartDate()
         self.clearConsole()
-    # End date
         end_date = self.inputEndDate(start_date)
         self.clearConsole()
         return start_date, end_date
