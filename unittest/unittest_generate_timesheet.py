@@ -1,11 +1,13 @@
 import os
 import unittest
-from io import StringIO
-import io
-from datetime import datetime
 from unittest.mock import patch
-from generate_timesheet import getDate
+import io
+from io import StringIO
+from datetime import datetime
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../'))
 from txt_style import bcolors
+from generate_timesheet import getDate
 
 text = bcolors()
 
