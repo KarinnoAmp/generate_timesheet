@@ -7,7 +7,8 @@ import yaml
 
 text = bcolors()
 try:
-    config_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.yaml'))
+    config_path: str = str(os.path.join(os.getcwd(), 'config.yaml'))
+    print(config_path)
     config = yaml.full_load(open(config_path, encoding='utf-8'))
 except FileNotFoundError:
     print(text.FAIL + 'Cannot find config.yaml file' + text.ENDC)
