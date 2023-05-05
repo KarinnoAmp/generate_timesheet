@@ -22,10 +22,8 @@ class getDate:
     def getDate(self):
         '''Get date from console input'''
         self.clearConsole()
-    # Start date
         start_date = self.inputStartDate()
         self.clearConsole()
-    # End date
         end_date = self.inputEndDate(start_date)
         self.clearConsole()
         return start_date, end_date
@@ -132,6 +130,6 @@ class getDate:
 if __name__ == '__main__':
     getDate().clearConsole()
     startDate, endDate = getDate().getDate()
-    generate_excel.write_excel(data.getTasksData(startDate, endDate))
+    generate_excel.write_excel(data.getAllTasksData(startDate, endDate))
     getDate().clearConsole()
     getDate().showCompleteMessage()

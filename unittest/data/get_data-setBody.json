@@ -1,0 +1,64 @@
+{
+    "filter":{
+       "and":[
+          {
+             "property":"Task type",
+             "select":{
+                "does_not_equal":"Information"
+             }
+          },
+          {
+             "property":"Responsible person",
+             "people":{
+                "contains":"fb6ab337-1d37-4efc-8730-efbe2c602a9f"
+             }
+          },
+          {
+             "and":[
+                {
+                   "property":"Date",
+                   "date":{
+                      "on_or_before":"2022-10-31"
+                   }
+                },
+                {
+                   "property":"Date",
+                   "date":{
+                      "on_or_after":"2022-09-01"
+                   }
+                }
+             ]
+          },
+          {
+             "property":"Tags",
+             "multi_select":{
+                "does_not_contain":"Leave"
+             }
+          },
+          {
+             "property":"Tags",
+             "multi_select":{
+                "does_not_contain":"Holiday"
+             }
+          },
+          {
+             "property":"Task type",
+             "select":{
+                "does_not_equal":"Leave"
+             }
+          },
+          {
+             "property":"Task type",
+             "select":{
+                "does_not_equal":"Information"
+             }
+          }
+       ]
+    },
+    "sorts":[
+       {
+          "property":"Date",
+          "direction":"ascending"
+       }
+    ]
+ }
