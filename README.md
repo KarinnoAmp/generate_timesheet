@@ -1,6 +1,10 @@
 # No TimeSheet
 > *Version 1.3 Release*
 
+## Version 1.3
+### *Bug fix*
+- Fix the display of incorrect end date in the Excel file
+---
 ## Version 1.1
 ### *New feature & improvement*
 - This is release version
