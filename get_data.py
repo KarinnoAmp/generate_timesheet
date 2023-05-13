@@ -178,13 +178,13 @@ class notionData:
         return date_formatted
     
     def checkTaskProject(self, project_list: list) -> str:
-        project = list()
+        projects = list()
         if len(project_list) > 0:
-            for x in project_list:
-                project.append(x['name'])
+            for project in project_list:
+                projects.append(project['name'])
         else:
-            project = None
-        return project
+            projects = None
+        return projects
     
     def summaryTasks(self, json_data: list, person_name: str) -> object:
         '''get list of tasks in notion'''
@@ -259,6 +259,6 @@ if __name__ == '__main__':
     start_date: str= '01-05-2023'
     end_date: str = '03-05-2023'
     timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
-    with open("export_data.json", "w") as outfile:
-        json.dump(timesheet_record, outfile, indent=4)
+    with open("export_data.json", "w") as json_outfile:
+        json.dump(timesheet_record, json_outfile, indent=4)
     
