@@ -201,27 +201,26 @@ class notionData:
                     'status': task['properties']['Status']['status']['name'],
                     'project': self.checkTaskProject(task['properties']['Project']['multi_select'])
                 }
-                for project in task_dict['project']:
-                    if person_name not in self.ALL_PROJECT[project].keys():
-                        self.ALL_PROJECT[project].update({person_name: [task_dict]})
-                    else:
-                        self.ALL_PROJECT[project][person_name].append(task_dict)
-                    
+                if task_dict['project'] is None:
+                    continue
+                else:
+                    for project in task_dict['project']:
+                        if person_name not in self.ALL_PROJECT[project].keys():
+                            self.ALL_PROJECT[project].update({person_name: [task_dict]})
+                        else:
+                            self.ALL_PROJECT[project][person_name].append(task_dict)
         return self.ALL_PROJECT
     
     def getAllTasksData(self, start_date: datetime, end_date: datetime) -> dict:
         '''get all time sheet data from person in config file'''
-        lst_timesheet_record: list = list() # All tasks of all person with format
-        persons: dict = self.getPerson()
+        get_person_response = self.request.sendRequestGetPerson()
+        persons: dict = self.getPerson(get_person_response)
+        self.getProject(get_person_response)
         for person_name in tqdm(persons.keys(), ncols=100, colour='cyan', desc='Requesting data..'):
             '''Collect all person tasks'''
             lst_personal_task: list = self.getTaskData(start_date, end_date, personal_id=persons[person_name]) # non-format data
-            formatted_data: object = self.summaryTasks(lst_personal_task, person_name)
-            lst_timesheet_record.append(formatted_data)
-        timesheet_record: dict = {
-            'items': lst_timesheet_record
-        }
-        return timesheet_record
+            self.summaryTasks(lst_personal_task, person_name)
+        return self.ALL_PROJECT
     
     def getTaskData(self, start_date: datetime, end_date: datetime, personal_id: str) -> dict:
         lst_personal_task: list = list() # All tasks of 1 person non-format
@@ -257,14 +256,9 @@ class notionData:
         return project_dict
 
 if __name__ == '__main__':
-    with open('/Users/karinno/Documents/GenerateTimesheet/generate_timesheet/export_data.json', 'r') as json_file:
-        json_data: dict = json.load(json_file)
-    print(notionData().getProject(json_data))
-    # start_date: str= '03-05-2023'
-    # end_date: str = '03-05-2023'
-    # timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
-    # json_object: dict = json.dumps(timesheet_record, indent=4)
-    # with open("export_data.json", "w") as outfile:
-    #     outfile.write(json_object)
-    # print(notionData().getPerson())
+    start_date: str= '01-05-2023'
+    end_date: str = '03-05-2023'
+    timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
+    with open("export_data.json", "w") as outfile:
+        json.dump(timesheet_record, outfile, indent=4)
     
