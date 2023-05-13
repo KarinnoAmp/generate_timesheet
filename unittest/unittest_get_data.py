@@ -4,6 +4,7 @@ from datetime import datetime
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../'))
 from get_data import mathCalculator, setApi, notionData
+
 '''
 class testMathCalculator(unittest.TestCase):
     def setUp(self) -> None:
@@ -135,6 +136,9 @@ class testSetApi(unittest.TestCase):
         self.assertNoLogs(self.setApi.sendRequestGetPerson())
     '''
 class testNotionData(unittest.TestCase):
+    
+    # maxDiff = None
+    
     def setUp(self) -> None:
         self.notionData = notionData()
     '''
@@ -231,18 +235,26 @@ class testNotionData(unittest.TestCase):
     def test_checkTaskProject_no_project(self):
         data_set: list = []
         self.assertIsNone(self.notionData.checkTaskProject(data_set))
+    '''
     def test_summaryTasks(self):
+        # Set Up
+        path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getProject.json'))
+        with open(path, 'r') as json_file:
+            data: dict = json.load(json_file)
+        self.notionData.getProject(data['test_data'])
         # Data set
         data_set_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getTaskData_summaryTasks.json'))
         person_name: str = 'Nakarin Viyapron'
         with open(data_set_path, 'r') as data_file:
-            json_data: dict = json.load(data_file)
+            tasks_data: dict = json.load(data_file)
         # Expect result
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks.json'))
         with open(expect_result_path, 'r') as expect_result_file:
-            expect_result: dict = json.load(expect_result_file)
-        self.assertDictEqual(self.notionData.summaryTasks(json_data=json_data, person_name=person_name), expect_result)
-    
+            expected_result: dict = json.load(expect_result_file)
+        # Testing
+        result_data = self.notionData.summaryTasks(json_data=tasks_data, person_name=person_name)
+        self.assertDictEqual(result_data, expected_result)
+    '''
     def test_summaryTasks_withEmptyTasks(self):
         # Data set
         data_set_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getTaskData_summaryTasks.json'))
@@ -289,14 +301,14 @@ class testNotionData(unittest.TestCase):
         path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getPerson.json'))
         with open(path, 'r') as json_file:
             data: dict = json.load(json_file)
-        self.assertDictEqual(self.notionData.getPerson(), data)
-'''
+        self.assertDictEqual(self.notionData.getPerson(data['test_data']), data['expected_result'])
+
     def test_getProject(self):
         path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getProject.json'))
         with open(path, 'r') as json_file:
             data: dict = json.load(json_file)
         self.assertDictEqual(self.notionData.getProject(data['test_data']), data['expected_result'])
-
+'''
 if __name__ == '__main__':
     unittest.main()
     
