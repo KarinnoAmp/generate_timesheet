@@ -121,6 +121,11 @@ class setApi:
             raise(ConnectionError(str(response.status_code) + '\n' + 'message: ' + str(response.json())))
         return response.json()
 
+    def sendRequestGetPerson(self) -> dict:
+        self.setBodyGetPerson()
+        json_response: dict = self.sendRequest()
+        return json_response
+
     def setBodyGetPerson(self, start_date: str = '2022-11-01', end_date: str = '2022-11-01') -> dict:
         if not isinstance(start_date, str) or not isinstance(end_date, str):
             raise ValueError('start_date or end_date was in wrong type')
@@ -155,6 +160,7 @@ class notionData:
     def __init__(self):
         self.request = setApi()
         self.math = mathCalculator()
+        self.ALL_PROJECT = dict()
     
     def checkTaskTitle(self, task_title: list) -> str:
         if not task_title:
@@ -171,46 +177,38 @@ class notionData:
             date_formatted = None
         return date_formatted
     
-    def checkTaskProject(self, project_list: list):
-        if len(project_list) > 1:
-            for x in range(len(project_list)):
-                if x < 1:
-                    project: str = str(project_list[x]['name'])
-                else:
-                    project: str = str(project) + ', ' + str(project_list[x]['name'])
-        elif 1 >= len(project_list) > 0:
-            project: str = str(project_list[0]['name'])
+    def checkTaskProject(self, project_list: list) -> str:
+        project = list()
+        if len(project_list) > 0:
+            for x in project_list:
+                project.append(x['name'])
         else:
             project = None
         return project
     
     def summaryTasks(self, json_data: list, person_name: str) -> object:
         '''get list of tasks in notion'''
-        content = list()
-        total_work_hours = float(0)
-        for data in json_data:
-            if not data['results']:
+        for tasks in json_data:
+            if not tasks['results']:
                 break
-            for result in data['results']:
+            for task in tasks['results']:
                 # Set data to dictionary
-                dict = {
-                    'title': self.checkTaskTitle(result['properties']['Task']['title']),
-                    'start_date': self.checkDateFormat(result['properties']['Date']['date']['start']),
-                    'end_date': self.checkDateFormat(result['properties']['Date']['date']['end']),
-                    'total_work_hours': float(result['properties']['Work hours per person']['formula']['number']),
-                    'status': result['properties']['Status']['status']['name'],
-                    'project': self.checkTaskProject(result['properties']['Project']['multi_select'])
+                task_dict = {
+                    'title': self.checkTaskTitle(task['properties']['Task']['title']),
+                    'start_date': self.checkDateFormat(task['properties']['Date']['date']['start']),
+                    'end_date': self.checkDateFormat(task['properties']['Date']['date']['end']),
+                    'total_work_hours': float(task['properties']['Work hours per person']['formula']['number']),
+                    'status': task['properties']['Status']['status']['name'],
+                    'project': self.checkTaskProject(task['properties']['Project']['multi_select'])
                 }
-                total_work_hours = total_work_hours + dict['total_work_hours']
-                content.append(dict)
-        total_work_hours: float = self.math.roundNumber(total_work_hours, 2)
-        timesheet_data: dict = {
-            'person': person_name,
-            'data': content,
-            'total_work_hours': total_work_hours
-        }
-        return timesheet_data
-
+                for project in task_dict['project']:
+                    if person_name not in self.ALL_PROJECT[project].keys():
+                        self.ALL_PROJECT[project].update({person_name: [task_dict]})
+                    else:
+                        self.ALL_PROJECT[project][person_name].append(task_dict)
+                    
+        return self.ALL_PROJECT
+    
     def getAllTasksData(self, start_date: datetime, end_date: datetime) -> dict:
         '''get all time sheet data from person in config file'''
         lst_timesheet_record: list = list() # All tasks of all person with format
@@ -241,24 +239,32 @@ class notionData:
             if not personal_tasks['has_more']: # Will do this when has no more that 100 tasks in 1 requests
                 break
         return lst_personal_task
-
-    def getPerson(self) -> dict:
-        data = self.request.setBodyGetPerson()
-        json_response = self.request.sendRequest()
+    
+    def getPerson(self, response: dict) -> dict:
         persons = dict()
         for data in tqdm(
-            json_response['results'][0]['properties']['Responsible person']['people'], 
+            response['results'][0]['properties']['Responsible person']['people'], 
             ncols=100, colour='cyan', desc='Getting person..'
         ):
-            persons.update({data['name']: data['id']})
+            persons[data['name']] = data['id']
         return persons
+    
+    def getProject(self, dict_data: dict) -> list:
+        project_dict = dict()
+        for project in dict_data['results'][0]['properties']['Project']['multi_select']:
+            project_dict[project['name']] = dict()
+        self.ALL_PROJECT = project_dict
+        return project_dict
 
 if __name__ == '__main__':
-    start_date: str= '03-05-2023'
-    end_date: str = '03-05-2023'
-    timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
-    json_object: dict = json.dumps(timesheet_record, indent=4)
-    with open("export_data.json", "w") as outfile:
-        outfile.write(json_object)
+    with open('/Users/karinno/Documents/GenerateTimesheet/generate_timesheet/export_data.json', 'r') as json_file:
+        json_data: dict = json.load(json_file)
+    print(notionData().getProject(json_data))
+    # start_date: str= '03-05-2023'
+    # end_date: str = '03-05-2023'
+    # timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
+    # json_object: dict = json.dumps(timesheet_record, indent=4)
+    # with open("export_data.json", "w") as outfile:
+    #     outfile.write(json_object)
     # print(notionData().getPerson())
     
