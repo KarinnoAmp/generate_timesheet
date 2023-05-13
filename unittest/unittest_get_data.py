@@ -252,6 +252,21 @@ class testNotionData(unittest.TestCase):
         expect_result: dict = {}
         self.assertDictEqual(self.notionData.summaryTasks(json_data=json_data, person_name=person_name), expect_result)
     
+    def test_summaryTasks_one_project(self):
+        # Set Up
+        path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks-OneProject.json'))
+        with open(path, 'r') as json_file:
+            data: dict = json.load(json_file)
+        self.notionData.getProject(data['test_data'])
+        # Data set
+        data_set_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getTaskData_summaryTasks.json'))
+        person_name: str = 'Nakarin Viyapron'
+        with open(data_set_path, 'r') as data_file:
+            tasks_data: dict = json.load(data_file)
+        # Testing
+        result_data = self.notionData.summaryTasks(json_data=tasks_data, person_name=person_name)
+        self.assertDictEqual(result_data, data['expected_result'])
+    
     def test_getTaskData(self):
         data_set = self.notionData.getTaskData(
             start_date=datetime(2022, 9, 1), 
