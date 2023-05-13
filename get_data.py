@@ -205,10 +205,13 @@ class notionData:
                     continue
                 else:
                     for project in task_dict['project']:
-                        if person_name not in self.ALL_PROJECT[project].keys():
-                            self.ALL_PROJECT[project].update({person_name: [task_dict]})
+                        if project in self.ALL_PROJECT:
+                            if person_name not in self.ALL_PROJECT[project].keys():
+                                self.ALL_PROJECT[project].update({person_name: [task_dict]})
+                            else:
+                                self.ALL_PROJECT[project][person_name].append(task_dict)
                         else:
-                            self.ALL_PROJECT[project][person_name].append(task_dict)
+                            continue
         return self.ALL_PROJECT
     
     def getAllTasksData(self, start_date: datetime, end_date: datetime) -> dict:
