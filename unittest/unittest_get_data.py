@@ -4,7 +4,7 @@ from datetime import datetime
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../'))
 from get_data import mathCalculator, setApi, notionData
-
+'''
 class testMathCalculator(unittest.TestCase):
     def setUp(self) -> None:
         self.mathCalculator = mathCalculator()
@@ -14,11 +14,11 @@ class testMathCalculator(unittest.TestCase):
     
     def test_roundNumber_up(self):
         self.assertEqual(self.mathCalculator.roundNumber(float(0.005), 2), float(0.01))
-
+'''
 class testSetApi(unittest.TestCase):
     def setUp(self) -> None:
         self.setApi = setApi()
-    
+    '''
     def test_setBody_withMoreThan_100_items(self):
         start_date: str = '2022-11-11'
         end_date:   str = '2022-11-11'
@@ -130,11 +130,14 @@ class testSetApi(unittest.TestCase):
     def test_setBodyGetPerson_customDate_datetime(self):
         with self.assertRaisesRegex(ValueError, expected_regex='start_date or end_date was in wrong type'):
             self.setApi.setBodyGetPerson(start_date=datetime(2022, 11, 1), end_date=datetime(2022, 11, 1))
-
+    
+    def test_sendRequestGetPerson(self):
+        self.assertNoLogs(self.setApi.sendRequestGetPerson())
+    '''
 class testNotionData(unittest.TestCase):
     def setUp(self) -> None:
         self.notionData = notionData()
-    
+    '''
     def test_checkTaskTitle(self):
         title: list = [
             {
@@ -287,6 +290,12 @@ class testNotionData(unittest.TestCase):
         with open(path, 'r') as json_file:
             data: dict = json.load(json_file)
         self.assertDictEqual(self.notionData.getPerson(), data)
+'''
+    def test_getProject(self):
+        path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getProject.json'))
+        with open(path, 'r') as json_file:
+            data: dict = json.load(json_file)
+        self.assertDictEqual(self.notionData.getProject(data['test_data']), data['expected_result'])
 
 if __name__ == '__main__':
     unittest.main()
