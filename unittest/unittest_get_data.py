@@ -4,7 +4,7 @@ from datetime import datetime
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../'))
 from get_data import mathCalculator, setApi, notionData
-'''
+
 class testMathCalculator(unittest.TestCase):
     def setUp(self) -> None:
         self.mathCalculator = mathCalculator()
@@ -130,11 +130,11 @@ class testSetApi(unittest.TestCase):
     def test_setBodyGetPerson_customDate_datetime(self):
         with self.assertRaisesRegex(ValueError, expected_regex='start_date or end_date was in wrong type'):
             self.setApi.setBodyGetPerson(start_date=datetime(2022, 11, 1), end_date=datetime(2022, 11, 1))
-'''
+
 class testNotionData(unittest.TestCase):
     def setUp(self) -> None:
         self.notionData = notionData()
-    '''
+    
     def test_checkTaskTitle(self):
         title: list = [
             {
@@ -197,7 +197,7 @@ class testNotionData(unittest.TestCase):
         datetime_format = datetime(2023, 5, 3)
         with self.assertRaises(AttributeError):
             self.notionData.checkDateFormat(datetime_format)
-    '''
+    
     def test_checkTaskProject(self):
         data_set: list = [
             {
@@ -228,7 +228,6 @@ class testNotionData(unittest.TestCase):
     def test_checkTaskProject_no_project(self):
         data_set: list = []
         self.assertIsNone(self.notionData.checkTaskProject(data_set))
-    '''
     def test_summaryTasks(self):
         # Data set
         data_set_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getTaskData_summaryTasks.json'))
@@ -288,7 +287,7 @@ class testNotionData(unittest.TestCase):
         with open(path, 'r') as json_file:
             data: dict = json.load(json_file)
         self.assertDictEqual(self.notionData.getPerson(), data)
-'''
+
 if __name__ == '__main__':
     unittest.main()
     
