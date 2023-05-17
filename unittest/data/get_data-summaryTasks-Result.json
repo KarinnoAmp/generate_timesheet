@@ -1,0 +1,875 @@
+{
+    "P_MyHaus": {
+        "Foremost": [
+            {
+                "title": "Update the access control workflow following feedback from K.Noi",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "UI/UX: Discuss the UI/UX tasks",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "MyHuas UX/UI Stand up meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Discuss activities keys and planning with K.Nick, K.Gobb",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Briefing Log in and register backlog",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.33,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Access Control: Update the access control workflow",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.83,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Access Control: Update the High Level Requirements document",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: Analyze the data and format of actual data from PS Pro team",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.25,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Access Control: Refine the QR code workflow ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.67,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: Analyze the data and format of actual data from PS Pro team",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: API-parameter discussion",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: Add the condition of importing data compare with actual data",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.75,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Update project timelines",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.83,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: Add the condition of importing data and discuss with Sense",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.92,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "UI/UX: Analyze the application to design as Phase2 scope",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            }
+        ],
+        "Suparada Monkong": [
+            {
+                "title": "UI/UX: Discuss the UI/UX tasks",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "MyHuas UX/UI Stand up meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Briefing Log in and register backlog",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.33,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "[Mock UI] Login, Register, Forgot Password, User Information, Landing page of each menu",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.5,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "[Mock UI] Login, Register, Forgot Password, User Information, Landing page of each menu",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 4.0,
+                "project": [
+                    "P_MyHaus"
+                ]
+            }
+        ],
+        "Tor": [
+            {
+                "title": "MyHuas UX/UI Stand up meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            }
+        ],
+        "Hym": [
+            {
+                "title": "MyHuas UX/UI Stand up meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "Update project timelines",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.83,
+                "project": [
+                    "P_MyHaus"
+                ]
+            }
+        ],
+        "Noi Songchai": [
+            {
+                "title": "MyHuas UX/UI Stand up meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_MyHaus"
+                ]
+            },
+            {
+                "title": "PS Pro: API-parameter discussion",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "P_MyHaus"
+                ]
+            }
+        ]
+    },
+    "TMP2": {
+        "narongrith kesorn": [
+            {
+                "title": "Edit Regression for TMP (OTR-Booking Details) [1]",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2"
+                ]
+            },
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Edit Regression for TMP (OTR-Booking Details) [2]",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 5.0,
+                "project": [
+                    "TMP2"
+                ]
+            }
+        ],
+        "Worrapong Thirapat": [
+            {
+                "title": "Update Manage Flight Request and Edit List page and Edit Config Timeout",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Run Execute Test ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Edit My Bookings ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 4.0,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            }
+        ],
+        "Mac.Rukpong R": [
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            }
+        ]
+    },
+    "P_Wizlah": {
+        "Commond Na": [
+            {
+                "title": "Merchant detail page - Header and Chat tab",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Merchant detail page - Header and Chat tab",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.33,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Merchant detail page - Header and Chat tab",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 5.0,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Tor": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Wizlah support team (Check plan / Check Merchant UI )",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.83,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Update Merchant jira items / Discuss QA plan / Update plan / Check Admin for AR product",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Support N'Pa for questions in Variation",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Discuss for plan with Hym/ Support N\u2019Pa for Variation box  and do sprint review",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Hym": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Support N\u2019Pa for Variation box",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Discuss for plan with Hym/ Support N\u2019Pa for Variation box  and do sprint review",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Papassorn Lomcharee": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Develop Varidation box and validate button",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.83,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Develop Varidation box and validate button",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 4.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Support N\u2019Pa for Variation box",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Discuss for plan with Hym/ Support N\u2019Pa for Variation box  and do sprint review",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Attapon Boonpen": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Edit manual test script",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Edit manual test script",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 5.0,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Mac.Rukpong R": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ],
+        "Thanchanok Tessakarn": [
+            {
+                "title": "Wizlah stand up meeting and weekly demo",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.17,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Create Manual Test Script : Order Details - Completed",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            },
+            {
+                "title": "Create Manual Test Script : Order Details - Processing",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 5.5,
+                "project": [
+                    "P_Wizlah"
+                ]
+            }
+        ]
+    },
+    "A_CGS": {
+        "Danai Wancluen": [
+            {
+                "title": "[FE] UX/UI Order Lists and Order Detail",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 8.0,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ],
+        "Kroekkittikorn Kawilo": [
+            {
+                "title": "[FE] UX/UI Order Lists and Order Detail",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 8.0,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ],
+        "rangsiman panthet": [
+            {
+                "title": "HA proxy and helm install",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.33,
+                "project": [
+                    "A_CGS"
+                ]
+            },
+            {
+                "title": "Deploy Shipment Service",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.17,
+                "project": [
+                    "A_CGS"
+                ]
+            },
+            {
+                "title": "Standup meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "A_CGS"
+                ]
+            },
+            {
+                "title": "Deploy CGS.Authen",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.5,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ],
+        "Aekasit": [
+            {
+                "title": "Implement Flash API adapter",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 7.5,
+                "project": [
+                    "A_CGS"
+                ]
+            },
+            {
+                "title": "Standup meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ],
+        "Paradorn Y.": [
+            {
+                "title": "CGS Develop Reporting Service",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 4.0,
+                "project": [
+                    "A_CGS"
+                ]
+            },
+            {
+                "title": "Standup meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ],
+        "Park": [
+            {
+                "title": "Standup meeting",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "A_CGS"
+                ]
+            }
+        ]
+    },
+    "TMP1": {
+        "Worrapong Thirapat": [
+            {
+                "title": "Update Manage Flight Request and Edit List page and Edit Config Timeout",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Run Execute Test ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.0,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            },
+            {
+                "title": "Edit My Bookings ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 4.0,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            }
+        ],
+        "Mac.Rukpong R": [
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            }
+        ],
+        "narongrith kesorn": [
+            {
+                "title": "Discuss with team about issue regression (robot cannot read config yaml file)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "TMP2",
+                    "TMP1"
+                ]
+            }
+        ]
+    },
+    "AIS_ADMD": {
+        "Sarunya (Song)": [
+            {
+                "title": "Test Script Delele log of a build Jenkins  ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 3.0,
+                "project": [
+                    "AIS_ADMD",
+                    "AIS_IDS",
+                    "AIS_AFP"
+                ]
+            }
+        ]
+    },
+    "AIS_IDS": {
+        "Sarunya (Song)": [
+            {
+                "title": "Test Script Delele log of a build Jenkins  ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 3.0,
+                "project": [
+                    "AIS_ADMD",
+                    "AIS_IDS",
+                    "AIS_AFP"
+                ]
+            }
+        ]
+    },
+    "AIS_AFP": {
+        "Sarunya (Song)": [
+            {
+                "title": "Test Script Delele log of a build Jenkins  ",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 3.0,
+                "project": [
+                    "AIS_ADMD",
+                    "AIS_IDS",
+                    "AIS_AFP"
+                ]
+            }
+        ]
+    },
+    "Other": {
+        "Mac.Rukpong R": [
+            {
+                "title": "Research docker (fix issue docker file) and install Jenkins on docker prepare training AIS",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "Other"
+                ]
+            },
+            {
+                "title": "Research and summary issue Dockerfile (install robot on container docker)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 1.5,
+                "project": [
+                    "Other"
+                ]
+            }
+        ]
+    },
+    "AIS_MyChannel": {
+        "Mac.Rukpong R": [
+            {
+                "title": "AIS training about usage command Robotframework and set Jenkins",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "AIS_MyChannel"
+                ]
+            }
+        ],
+        "Napat Reungpanya": [
+            {
+                "title": "AIS training about usage command Robotframework and set Jenkins",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "AIS_MyChannel"
+                ]
+            }
+        ],
+        "K Suthasinee": [
+            {
+                "title": "AIS training about usage command Robotframework and set Jenkins",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "AIS_MyChannel"
+                ]
+            }
+        ],
+        "Pattamawan Yodpetch": [
+            {
+                "title": "AIS training about usage command Robotframework and set Jenkins",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "AIS_MyChannel"
+                ]
+            }
+        ],
+        "Supasete Sgoolreungsri": [
+            {
+                "title": "AIS training about usage command Robotframework and set Jenkins",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 2.0,
+                "project": [
+                    "AIS_MyChannel"
+                ]
+            }
+        ]
+    },
+    "P_Clickzy": {
+        "Tor": [
+            {
+                "title": "Support team for Vimut integration (Chase document request)",
+                "start_date": "03/04/2023",
+                "end_date": "03/04/2023",
+                "total_work_hours": 0.42,
+                "project": [
+                    "P_Clickzy"
+                ]
+            }
+        ]
+    }
+}

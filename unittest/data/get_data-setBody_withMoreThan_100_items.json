@@ -8,12 +8,6 @@
             }
          },
          {
-            "property":"Responsible person",
-            "people":{
-               "contains":"6cb3cc27-680d-4026-a3e6-39681191582a"
-            }
-         },
-         {
             "and":[
                {
                   "property":"Date",
