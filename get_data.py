@@ -39,7 +39,8 @@ class setApi:
         }
         self.BODY = None
         self.URL = config['url']
-
+        self.ALL_PROJECT = dict()
+    """
     def setBody(self, start_date: str, end_date: str, person_key: str, last_page: str=None) -> dict:
         '''Set request body'''
         body: dict = {
@@ -110,7 +111,7 @@ class setApi:
             body.update({'start_cursor': str(last_page)})
         self.BODY = body
         return body
-    
+    """
     def setBodyNew(self, start_date: str, end_date: str, last_page: str=None) -> dict:
         '''Set request body'''
         body: dict = {
@@ -250,7 +251,7 @@ class notionData:
         else:
             projects = None
         return projects
-    
+    """
     def summaryTasks(self, json_data: list, person_name: str) -> object:
         '''get list of tasks in notion'''
         for tasks in json_data:
@@ -278,7 +279,7 @@ class notionData:
                         else:
                             continue
         return self.ALL_PROJECT
-    
+    """
     def summaryTasksNew(self, json_data: list) -> object:
         '''get list of tasks in notion'''
         for task in json_data:
@@ -320,7 +321,7 @@ class notionData:
                 }
                 list_projects.append(task_dict)
         return list_projects
-    
+    """
     def getAllTasksData(self, start_date: datetime, end_date: datetime) -> dict:
         '''get all time sheet data from person in config file'''
         get_person_response = self.request.sendRequestGetPerson()
@@ -331,7 +332,7 @@ class notionData:
             lst_personal_task: list = self.getTaskData(start_date, end_date, personal_id=persons[person_name]) # non-format data
             self.summaryTasks(lst_personal_task, person_name)
         return self.ALL_PROJECT
-    
+    """
     def getAllTasksDataNew(self, start_date: datetime, end_date: datetime) -> dict:
         '''get all time sheet data from person in config file'''
         # get_person_response = self.request.sendRequestGetPerson()
@@ -341,7 +342,7 @@ class notionData:
         self.summaryTasksNew(lst_personal_task)
         # self.getProject(get_person_response)
         return self.ALL_PROJECT
-    
+    """
     def getTaskData(self, start_date: datetime, end_date: datetime, personal_id: str) -> list:
         lst_personal_task: list = list() # All tasks of 1 person non-format
         personal_tasks: dict = dict({'next_cursor': None})
@@ -358,7 +359,7 @@ class notionData:
             if not personal_tasks['has_more']: # Will do this when has no more that 100 tasks in 1 requests
                 break
         return lst_personal_task
-    
+    """
     def getTaskDataNew(self, start_date: datetime, end_date: datetime) -> list:
         lst_personal_task: list = list() # All tasks of 1 person non-format
         personal_tasks: dict = dict({'next_cursor': None})
@@ -392,8 +393,8 @@ class notionData:
         return project_dict
 
 if __name__ == '__main__':
-    start_date: str= '01-04-2023'
-    end_date: str = '30-04-2023'
+    start_date: str= '03-04-2023'
+    end_date: str = '03-04-2023'
     input_value = input('> ')
     if input_value == 'test':
         timesheet_record: dict = notionData().getAllTasksDataNew(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
