@@ -19,29 +19,29 @@ class testSetApi(unittest.TestCase):
     def setUp(self) -> None:
         self.setApi = setApi()
     
-    def test_setBodyNEW(self):
+    def test_setBody(self):
         start_date: str = '2022-11-11'
         end_date:   str = '2022-11-11'
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-setBody.json'))
         with open(expect_result_path, 'r') as expect_result_file:
             expect_result: dict = json.load(expect_result_file)
-        output_result: dict = self.setApi.setBodyNew(start_date, end_date)
+        output_result: dict = self.setApi.setBody(start_date, end_date)
         self.assertDictEqual(output_result, expect_result)
     
-    def test_setBodyNEW_withMoreThan_100_items(self):
+    def test_setBody_withMoreThan_100_items(self):
         start_date: str = '2022-11-11'
         end_date:   str = '2022-11-11'
         last_page:  str = 'Hello'
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-setBody_withMoreThan_100_items.json'))
         with open(expect_result_path, 'r') as expect_result_file:
             expect_result: dict = json.load(expect_result_file)
-        output_result: dict = self.setApi.setBodyNew(start_date, end_date, last_page)
+        output_result: dict = self.setApi.setBody(start_date, end_date, last_page)
         self.assertDictEqual(output_result, expect_result)
         
     def test_sendRequest(self):
         start_date: str = '2022-11-11'
         end_date:   str = '2022-11-11'
-        self.setApi.setBodyNew(start_date, end_date)
+        self.setApi.setBody(start_date, end_date)
         expect_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-sendRequest.json'))
         with open(expect_result_path, 'r') as expect_result_file:
             expect_result: dict = json.load(expect_result_file)
@@ -52,7 +52,7 @@ class testSetApi(unittest.TestCase):
         url: str = 'https://api.notion.com/v1/databases/ffffffffffffffffffffffffffffffff'
         start_date: str = '2022-11-11'
         end_date:   str = '2022-11-11'
-        self.setApi.setBodyNew(start_date, end_date)
+        self.setApi.setBody(start_date, end_date)
         with self.assertRaises(ConnectionError):
             self.setApi.sendRequest(url=url)
     
@@ -227,21 +227,21 @@ class testNotionData(unittest.TestCase):
         output_result: list = self.notionData.formattedTasks(test_data)
         self.assertListEqual(output_result, result_data)
     
-    def test_summaryTasksNEW(self):
+    def test_summaryTasks(self):
         test_data_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-formattedTasks-Result.json'))
         with open(test_data_path, 'r') as test_data_file:
             test_data: dict = json.load(test_data_file)
         test_result_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks-Result.json'))
         with open(test_result_path, 'r') as json_result_file:
             result_data: dict = json.load(json_result_file)
-        output_result: dict = self.notionData.summaryTasksNew(test_data)
+        output_result: dict = self.notionData.summaryTasks(test_data)
         self.assertDictEqual(output_result, result_data)
         
     def test_summaryTasks_withEmptyTasks(self):
         # Data set
         json_data: list = [{}]
         with self.assertRaises(KeyError):
-            self.notionData.summaryTasksNew(json_data=json_data)
+            self.notionData.summaryTasks(json_data=json_data)
     
     def test_summaryTasks_withEmptyProject(self):
         # Data set
@@ -268,10 +268,10 @@ class testNotionData(unittest.TestCase):
             },
         ]
         expect_result: dict = {}
-        self.assertDictEqual(self.notionData.summaryTasksNew(json_data=json_data), expect_result)
+        self.assertDictEqual(self.notionData.summaryTasks(json_data=json_data), expect_result)
     
-    def test_getTaskDataNEW(self):
-        output_result: list = self.notionData.getTaskDataNew(
+    def test_getTaskData(self):
+        output_result: list = self.notionData.getTaskData(
             start_date=datetime(2021, 4, 3), 
             end_date=datetime(2021, 4, 3)
         )
@@ -280,8 +280,8 @@ class testNotionData(unittest.TestCase):
             json_data: dict = json.load(json_file)
         self.assertListEqual(output_result, json_data)
     
-    def test_getTaskDataNEW_withEmptyResult(self):
-        output_result: list = self.notionData.getTaskDataNew(
+    def test_getTaskData_withEmptyResult(self):
+        output_result: list = self.notionData.getTaskData(
             start_date=datetime(2020, 4, 3), 
             end_date=datetime(2020, 4, 3)
         )
@@ -290,17 +290,17 @@ class testNotionData(unittest.TestCase):
             json_data: dict = json.load(json_file)
         self.assertListEqual(output_result, json_data)
     
-    def test_getPerson(self):
-        path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getPerson.json'))
-        with open(path, 'r') as json_file:
-            data: dict = json.load(json_file)
-        self.assertDictEqual(self.notionData.getPerson(data['test_data']), data['expected_result'])
+    # def test_getPerson(self):
+    #     path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getPerson.json'))
+    #     with open(path, 'r') as json_file:
+    #         data: dict = json.load(json_file)
+    #     self.assertDictEqual(self.notionData.getPerson(data['test_data']), data['expected_result'])
     
-    def test_getProject(self):
-        path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getProject.json'))
-        with open(path, 'r') as json_file:
-            data: dict = json.load(json_file)
-        self.assertDictEqual(self.notionData.getProject(data['test_data']), data['expected_result'])
+    # def test_getProject(self):
+    #     path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-getProject.json'))
+    #     with open(path, 'r') as json_file:
+    #         data: dict = json.load(json_file)
+    #     self.assertDictEqual(self.notionData.getProject(data['test_data']), data['expected_result'])
 
 if __name__ == '__main__':
     unittest.main()

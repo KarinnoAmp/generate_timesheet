@@ -41,7 +41,7 @@ class setApi:
         self.URL = config['url']
         self.ALL_PROJECT = dict()
     
-    def setBodyNew(self, start_date: str, end_date: str, last_page: str=None) -> dict:
+    def setBody(self, start_date: str, end_date: str, last_page: str=None) -> dict:
         '''Set request body'''
         body: dict = {
             'filter': {
@@ -181,7 +181,7 @@ class notionData:
             projects = None
         return projects
     
-    def summaryTasksNew(self, json_data: list) -> object:
+    def summaryTasks(self, json_data: list) -> object:
         '''get list of tasks in notion'''
         for task in json_data:
             if not task['project']:
@@ -223,19 +223,19 @@ class notionData:
                 list_projects.append(task_dict)
         return list_projects
     
-    def getAllTasksDataNew(self, start_date: datetime, end_date: datetime) -> dict:
+    def getAllTasksData(self, start_date: datetime, end_date: datetime) -> dict:
         '''get all time sheet data from person in config file'''
-        lst_personal_task: list = self.getTaskDataNew(start_date, end_date) # non-format data
+        lst_personal_task: list = self.getTaskData(start_date, end_date) # non-format data
         lst_personal_task = self.formattedTasks(lst_personal_task)
-        self.summaryTasksNew(lst_personal_task)
+        self.summaryTasks(lst_personal_task)
         return self.ALL_PROJECT
     
-    def getTaskDataNew(self, start_date: datetime, end_date: datetime) -> list:
+    def getTaskData(self, start_date: datetime, end_date: datetime) -> list:
         lst_personal_task: list = list() # All tasks of 1 person non-format
         personal_tasks: dict = dict({'next_cursor': None})
         while True:
             '''Collect all task of person'''
-            self.request.setBodyNew(
+            self.request.setBody(
                 str(start_date.date()),
                 str(end_date.date()),
                 personal_tasks['next_cursor']
@@ -246,27 +246,26 @@ class notionData:
                 break
         return lst_personal_task
     
-    def getPerson(self, response: dict) -> dict:
-        persons = dict()
-        for data in tqdm(
-            response['results'][0]['properties']['Responsible person']['people'], 
-            ncols=100, colour='cyan', desc='Getting person..'
-        ):
-            persons[data['name']] = data['id']
-        return persons
+    # def getPerson(self, response: dict) -> dict:
+    #     persons = dict()
+    #     for data in tqdm(
+    #         response['results'][0]['properties']['Responsible person']['people'], 
+    #         ncols=100, colour='cyan', desc='Getting person..'
+    #     ):
+    #         persons[data['name']] = data['id']
+    #     return persons
     
-    def getProject(self, dict_data: dict) -> list:
-        project_dict = dict()
-        for project in dict_data['results'][0]['properties']['Project']['multi_select']:
-            project_dict[project['name']] = dict()
-        self.ALL_PROJECT = project_dict
-        return project_dict
+    # def getProject(self, dict_data: dict) -> list:
+    #     project_dict = dict()
+    #     for project in dict_data['results'][0]['properties']['Project']['multi_select']:
+    #         project_dict[project['name']] = dict()
+    #     self.ALL_PROJECT = project_dict
+    #     return project_dict
 
 if __name__ == '__main__':
     start_date: str= '03-04-2023'
     end_date: str = '03-04-2023'
-    input_value = input('> ')
-    timesheet_record: dict = notionData().getAllTasksDataNew(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
+    timesheet_record: dict = notionData().getAllTasksData(datetime.strptime(str(start_date), '%d-%m-%Y'), datetime.strptime(str(end_date), '%d-%m-%Y'))
     with open("export_data.json", "w") as json_outfile:
         json.dump(timesheet_record, json_outfile, indent=4)
     
