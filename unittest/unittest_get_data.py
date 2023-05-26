@@ -243,6 +243,17 @@ class testNotionData(unittest.TestCase):
         with self.assertRaises(KeyError):
             self.notionData.summaryTasks(json_data=json_data)
     
+    def test_summaryTasks_withNoResponsePerson(self):
+        # Data set
+        test_data_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks-NoName.json'))
+        with open(test_data_path, 'r') as test_data_file:
+            test_data: dict = json.load(test_data_file)
+        result_data_path: str = str(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/get_data-summaryTasks-NoName_Result.json'))
+        with open(result_data_path, 'r') as expect_data_file:
+            expect_data: dict = json.load(expect_data_file)
+        result_data = self.notionData.summaryTasks(json_data=test_data)
+        self.assertDictEqual(result_data, expect_data)
+    
     def test_summaryTasks_withEmptyProject(self):
         # Data set
         json_data: list = [
