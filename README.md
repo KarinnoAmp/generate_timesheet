@@ -1,5 +1,5 @@
 # No Time Sheet
-> *Version 2.0 Pre-Release*
+> *Version 2.0.1*
 ---
 ## Requirements
 > Python script for generating timesheet from
