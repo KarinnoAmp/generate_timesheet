@@ -1,11 +1,14 @@
 FROM debian:stable-slim
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y curl git nano python3 python3-pip
+RUN apt update
+RUN apt install -y python3-pip nano curl wget openssh-server git
+
+ADD id_rsa /root/.ssh/id_rsa
+ADD id_rsa.pub /root/.ssh/id_rsa.pub
+RUN chmod 600 ~/.ssh/id_rsa
+RUN chmod 600 ~/.ssh/id_rsa.pub
 
 ADD requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-RUN rm requirements.txt
+RUN pip install -r requirements.txt
 
-CMD [ "/bin/bash" ]
+CMD [ "bin/bash" ]

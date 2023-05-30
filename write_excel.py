@@ -1,4 +1,5 @@
 import json
+import os
 from styleframe import StyleFrame, Styler, utils
 import pandas as pd
 from tqdm import tqdm
@@ -6,14 +7,13 @@ from tqdm import tqdm
 
 PATH_OUTPUT_REPORT: str = r'./report_excel.xlsx'
 REPORT_HEADER: dict = {
-    'Title': 80.0,
+    'Task': 80.0,
     'Start Date': 15.0,
     'End Date': 15.0,
     'Total Work Hours': 25.0,
-    'Status': 15.0,
-    'Project': 15.0,
+    'Project': 30.0,
 }
-DEFAULT_ROW_HEIGHT: int = 13  ## For font calibri 13
+DEFAULT_ROW_HEIGHT: int = 16  ## For font calibri 13
 
 
 class GenerateExcel:
@@ -22,123 +22,72 @@ class GenerateExcel:
 
     def get_dict_data_from_jsonfile(self, path: str) -> dict:
         data_from_json_file: dict = {}
+        _, file_extension = os.path.splitext(path)
+        if file_extension.lower() != '.json':
+            raise ValueError("File does not have a JSON extension.")
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"The file '{path}' does not exist.")
+
         with open(path, 'r', encoding='utf-8') as file:
             data_from_json_file = json.load(file)
         return data_from_json_file
 
-    def write_excel(self, data: dict):
-        excel_writer = StyleFrame.ExcelWriter(PATH_OUTPUT_REPORT)
-        for item in tqdm(data['items'], ncols=100):
-            person_name: str = item['person']
-            person_task: list = item['data']
-            headers: list = list(REPORT_HEADER.keys())
+    def new_write_excel(self, data: dict):
+        excel_writer = StyleFrame.ExcelWriter(self.path_output_report)
+        for project in tqdm(data, ncols=100):
             dataframe_list: list = []
-            all_task: int = len(person_task)
-            for task in person_task:
-                detail: list = [
-                    task['title'],
-                    task['start_date'],
-                    task['end_date'],
-                    task['total_work_hours'],
-                    task['status'],
-                    task['project']
-                    ]
-                dataframe_list.append(detail)
-            last_row_data: int = all_task + 1
-            summary_row: list = ['Total Man-Hours', '', '',
-                f'=SUBTOTAL(9, D2:D{last_row_data})', '', '']
-            summary_row_data: int = last_row_data + 1
-            summary_man_days: list = ['Total Man-Hours / 8', '', '',
-                f'=D{summary_row_data}/8', '', '']
-            dataframe_list.append(summary_row)
-            dataframe_list.append(summary_man_days)
-            dataframe = pd.DataFrame(dataframe_list, columns=headers)
-            default_style = self.set_default_excel_style()
-            style_frame = StyleFrame(dataframe, styler_obj=default_style)
-            self.set_header_excel_style(style_frame)
-            self.set_column_excel_style(style_frame)
-            self.set_last_row_excel_style(style_frame, all_task)
-            self.set_column_excel_width(style_frame)
-            style_frame.to_excel(excel_writer, sheet_name=person_name,
-                columns_and_rows_to_freeze='A2')
-        excel_writer.save()
-
-    ## New Function Implement
-    def write_new_excel_style(self, data: dict):
-        excel_writer = StyleFrame.ExcelWriter(PATH_OUTPUT_REPORT)
-        for item in tqdm(data['items'], ncols=100):
-            person_name: str = item['person']
-            person_task: list = item['data']
-            person_total_work_hours: str = item['total_work_hours']
-            headers: list = list(REPORT_HEADER.keys())
-            dataframe_list: list = []
-            ## Initial data
-            previous_date: str = ''
-            task_end_date: str = ''
-            title_list: list = []
-            project_list: list = []
-            total_work_hours_per_date: int = 0
-            height_point_style: list = []
-            number_all_task: int = len(person_task)
-            for index, task in enumerate(person_task):
-                if index != 0 and \
-                    (task['start_date'] != previous_date or number_all_task == index + 1):
-                    ## Add data to dataframe
-                    all_task_per_date: str = '\n'.join(title_list)
-                    number_all_task_per_date = len(title_list)
-                    height_point: int = number_all_task_per_date * DEFAULT_ROW_HEIGHT
-                    height_point_style.append(height_point)
-                    if task_end_date < task['start_date']:
-                        task_end_date = task['start_date']
-                    detail: list = [
-                        all_task_per_date,
+            persons_in_project: list = data[project]
+            all_row: int = 0
+            person_index_row: list = []
+            summary_index_row: list = []
+            for person in persons_in_project:
+                # person
+                person_row: list = [person, '', '', '', '']
+                dataframe_list.append(person_row)
+                person_index_row.append(all_row)
+                all_row += 1
+                tasks_of_person: list = data[project][person]
+                total_man_hour: int = 0
+                for task in tasks_of_person:
+                    # task
+                    details_task_row: list = [
+                        task['title'],
                         task['start_date'],
-                        task_end_date,
-                        total_work_hours_per_date,
-                        task['status'],
-                        project_list
-                        ]
-                    dataframe_list.append(detail)
-                    title_list = []
-                    total_work_hours_per_date = 0
-                    task_end_date = ''
-                ## Add title
-                task_title: str = task['title']
-                if task_title is None:
-                    title_list.append('')
-                else:
-                    title_list.append(f"- {task_title}")
-                ## Add project
-                project_name: str = task['project']
-                if task_title is None:
-                    project_list.append('')
-                else:
-                    project_list.append(project_name)
-                ## Check group date
-                previous_date = task['start_date']
-                ## Add end date
-                end_date: str = task['end_date']
-                if end_date != '' and end_date is not None:
-                    task_end_date = end_date
-                ## Summary work hours
-                total_work_hour: int = int(task['total_work_hours'])
-                total_work_hours_per_date += total_work_hour
+                        task['end_date'],
+                        task['total_work_hours'],
+                        ', '.join(task['project'])
+                    ]
+                    total_man_hour += task['total_work_hours']
+                    dataframe_list.append(details_task_row)
+                    all_row += 1
 
-            summary_man_hours: list = ['Total Man-Hours', '', '',
-                person_total_work_hours, '', '']
-            summary_man_days: list = ['Total Man-Hours / 8', '', '',
-                person_total_work_hours / 8, '', '']
-            dataframe_list.append(summary_man_hours)
-            dataframe_list.append(summary_man_days)
-            dataframe = pd.DataFrame(dataframe_list, columns=headers)
+                summary_row: list = ['Total Man-Hours', '', '',
+                                     total_man_hour, '']
+                dataframe_list.append(summary_row)
+                summary_index_row.append(all_row)
+                all_row += 1
+                summary_man_days: list = ['Total Man-Hours / 8', '', '',
+                                          total_man_hour/8, '']
+                dataframe_list.append(summary_man_days)
+                summary_index_row.append(all_row)
+                all_row += 1
+
+            # header
+            headers_row: list = list(REPORT_HEADER.keys())
+            dataframe = pd.DataFrame(dataframe_list, columns=headers_row)
+
+            # style
             default_style = self.set_default_excel_style()
-            style_frame = StyleFrame(dataframe, styler_obj=default_style)
+            style_frame = StyleFrame(dataframe, default_style)
             self.set_header_excel_style(style_frame)
             self.set_column_excel_style(style_frame)
-            self.set_last_row_excel_style(style_frame, number_all_task)
+            self.set_person_row_excel_style(style_frame, person_index_row)
+            self.set_summary_row_excel_style(style_frame, summary_index_row)
+
+            # size (width, height)
             self.set_column_excel_width(style_frame)
-            self.set_row_excel_height(style_frame, height_point_style)
-            style_frame.to_excel(excel_writer, sheet_name=person_name,
+            self.set_row_excel_height(style_frame, all_row)
+            style_frame.to_excel(excel_writer, sheet_name=project,
                 columns_and_rows_to_freeze='A2')
         excel_writer.save()
 
@@ -172,7 +121,7 @@ class GenerateExcel:
     def set_column_excel_style(style_frame):
         light_cyan_color: str = 'b7e1cd'
         ## Add column style follow header
-        header_list: list = ['Title']
+        header_list: list = ['Task']
         column_style = Styler(
             horizontal_alignment='left',
             vertical_alignment='top',
@@ -183,32 +132,32 @@ class GenerateExcel:
         style_frame.apply_column_style(cols_to_style=header_list, styler_obj=column_style)
 
     @staticmethod
-    def set_last_row_excel_style(style_frame, last_row_data: int):
+    def set_person_row_excel_style(style_frame, person_row: list):
+        cyan_color: str = 'ff9898'
+        person_row_style = Styler(
+            horizontal_alignment='left',
+            bg_color=cyan_color,
+            bold=True,
+            font=utils.fonts.calibri,
+            font_size=15
+        )
+        for index_row in person_row:
+            style_frame.apply_style_by_indexes(indexes_to_style=[index_row],
+                                               styler_obj=person_row_style)
+
+    @staticmethod
+    def set_summary_row_excel_style(style_frame, summary_row: list):
         cyan_color: str = '46bdc6'
         last_row_style = Styler(
             bg_color=cyan_color,
             font_color=utils.colors.white,
             bold=True,
             font=utils.fonts.calibri,
-            font_size=15
+            font_size=13
             )
-        text_summary_last_row_style = Styler(
-            horizontal_alignment='right',
-            vertical_alignment='top',
-            bg_color=cyan_color,
-            font_color=utils.colors.white,
-            bold=True,
-            font=utils.fonts.calibri,
-            font_size=15
-            )
-        for _ in range(2):
-            style_frame.apply_style_by_indexes(indexes_to_style=[last_row_data],
-                styler_obj=last_row_style)
-            style_frame.apply_style_by_indexes(indexes_to_style=[last_row_data],
-                cols_to_style=['Title'],
-                styler_obj=text_summary_last_row_style
-                )
-            last_row_data += 1
+        for index_row in summary_row:
+            style_frame.apply_style_by_indexes(indexes_to_style=[index_row],
+                                               styler_obj=last_row_style)
 
     @staticmethod
     def set_column_excel_width(style_frame):
@@ -217,16 +166,15 @@ class GenerateExcel:
             style_frame.set_column_width(columns=[header], width=REPORT_HEADER[header])
 
     @staticmethod
-    def set_row_excel_height(style_frame, height_point_style: list):
-        last_row: int = len(height_point_style)
+    def set_row_excel_height(style_frame, all_row: int):
+        # first row (content data)
         row: int = 2
-        for index_row in range(last_row):
-            style_frame.set_row_height(rows=[row], height=height_point_style[index_row])
+        for _ in range(all_row):
+            style_frame.set_row_height(rows=[row], height=DEFAULT_ROW_HEIGHT)
             row += 1
 
 
-# ## For Test
-# generator = GenerateExcel()
-# dict_data = generator.get_dict_data_from_jsonfile('./export_data.json')
-# generator.write_excel(dict_data)
-# # generator.write_new_excel_style(dict_data)
+if __name__=='__main__':
+    generater = GenerateExcel()
+    dict_data = generater.get_dict_data_from_jsonfile('./export_data.json')
+    generater.new_write_excel(dict_data)

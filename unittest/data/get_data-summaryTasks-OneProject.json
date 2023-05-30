@@ -537,101 +537,6 @@
                                 "id": ";tgv",
                                 "name": "Other",
                                 "color": "gray"
-                            },
-                            {
-                                "id": "w]LR",
-                                "name": "TMP1",
-                                "color": "yellow"
-                            },
-                            {
-                                "id": "4e072240-acea-4967-939b-3b73cb4f6871",
-                                "name": "TMP2",
-                                "color": "purple"
-                            },
-                            {
-                                "id": "11ea9532-8c5d-42f1-8d02-9250c89232d6",
-                                "name": "TMP Admin",
-                                "color": "default"
-                            },
-                            {
-                                "id": "<NnK",
-                                "name": "AIS_IDS",
-                                "color": "orange"
-                            },
-                            {
-                                "id": "Mw>C",
-                                "name": "AIS_AFP",
-                                "color": "purple"
-                            },
-                            {
-                                "id": "e8a3225b-79f8-4f73-b981-8b9125cf8152",
-                                "name": "AIS_ADMD",
-                                "color": "brown"
-                            },
-                            {
-                                "id": "79a2c5f5-be60-44ae-893b-27d52e42c81a",
-                                "name": "AIS_PAM",
-                                "color": "brown"
-                            },
-                            {
-                                "id": "e72c6240-6cb1-41d4-b5bc-ddc1e291d6c2",
-                                "name": "AIS_USMAP",
-                                "color": "pink"
-                            },
-                            {
-                                "id": "fz:F",
-                                "name": "AIS_MyChannel",
-                                "color": "red"
-                            },
-                            {
-                                "id": "758c313b-0eea-402a-b98c-4eb2536ebbaa",
-                                "name": "P_Clickzy",
-                                "color": "green"
-                            },
-                            {
-                                "id": "9d6743f5-3d29-46bd-9eaa-2806c452b9e6",
-                                "name": "P_MyHaus",
-                                "color": "purple"
-                            },
-                            {
-                                "id": "a562cbf5-6a70-403c-934e-f9901780b3ac",
-                                "name": "P_Wizlah",
-                                "color": "brown"
-                            },
-                            {
-                                "id": "d1472e8a-8575-43c9-b5f2-eb726a3949aa",
-                                "name": "P_VimutxClickzyIntegration",
-                                "color": "pink"
-                            },
-                            {
-                                "id": "a6a78954-6ca8-41b7-b304-322270288e07",
-                                "name": "A_CGS",
-                                "color": "orange"
-                            },
-                            {
-                                "id": "b8aecd2f-37de-4f06-8c75-56c2e578695c",
-                                "name": "NTL_Underwriting",
-                                "color": "green"
-                            },
-                            {
-                                "id": "CQEk",
-                                "name": "PG",
-                                "color": "green"
-                            },
-                            {
-                                "id": "25b95f7f-d408-45e4-8707-6b7397996f4a",
-                                "name": "SmartCSSD",
-                                "color": "pink"
-                            },
-                            {
-                                "id": "dfdf7dc3-c25c-49f8-8d21-312a52f6d16c",
-                                "name": "PBTS",
-                                "color": "blue"
-                            },
-                            {
-                                "id": "87a412de-7ab7-4981-a70b-b7ff3626659b",
-                                "name": "Big C",
-                                "color": "green"
                             }
                         ]
                     },
@@ -699,41 +604,159 @@
         "developer_survey": "https://notionup.typeform.com/to/bllBsoI4?utm_source=postman"
     },
     "expected_result": {
-        "Phailin Nawa":"f0409e6e-6ed3-45d1-8b97-9d28c48af900",
-        "Papassorn Lomcharee":"8ece0dbe-1ea0-4479-882d-797845448e3b",
-        "Supasete Sgoolreungsri":"5a7660c6-3f0d-45b6-a493-6134f8ed13bd",
-        "komnet.k":"176a3d6c-86f1-40f5-952f-493a060d8b07",
-        "Park":"6699fabf-c045-4950-82b5-dd0f0360052b",
-        "Worrapong Thirapat":"d386360c-3284-4348-bafd-3d294e1f2888",
-        "Pattamawan Yodpetch":"86f33784-6fb8-4a7e-a3d6-ad817c950c8b",
-        "Danai Wancluen":"5420fa41-1732-439a-ad9e-b6226dd873ca",
-        "Peeradis Sanguantrakul":"fc2d74ec-d225-4a18-8e33-1dc7eb88479b",
-        "Kroekkittikorn Kawilo":"43c77532-11e3-42bc-8a21-ce136edcd47b",
-        "Vattanan Buranapugdee":"a423ebcc-9b7b-4ba5-9219-77e5bab4c583",
-        "Nat Tantichatchawanwong":"2580bdbb-c5ac-450a-b5c1-0c02ed8ba7bb",
-        "rangsiman panthet":"6ee6e9fa-6c8a-4f7d-8024-339f08d37942",
-        "Suparat Kimsom":"51340179-79ea-4b98-967a-47c4492def85",
-        "Siriphong Wanjai":"82daffa0-aabc-4776-be28-581ff541dbaa",
-        "Paradorn Y.":"0903fc1c-7a75-4fe5-b2b8-2b86c5575bee",
-        "Tor":"34c7c45c-3960-4afc-b671-b43fedb35942",
-        "Hym":"8a20d79b-5251-49eb-b704-1afc06bf5aaa",
-        "Suparada Monkong":"54ba0253-b5bf-412a-b749-ea35671cba49",
-        "Aekasit":"bee490e2-077d-4740-a66a-1be28f22ecfe",
-        "Napanuth Khamkanist":"6cb3cc27-680d-4026-a3e6-39681191582a",
-        "Noi Songchai":"c3070d15-83d0-4519-ac24-2b9f60cbe0b8",
-        "Jakkrit Rauypong":"1f0f41a1-08b7-4ec1-b9ec-f9525ab59068",
-        "Attapon Boonpen":"5d5050b1-4d0e-47bb-b6a3-90290468afe9",
-        "Sarunya (Song)":"174ef0e6-5ecb-402c-8a51-bf7a1555018a",
-        "Napat Reungpanya":"41d9b1d1-e5a8-4b4e-970e-7dc68dd53302",
-        "Monchai Taion":"f1c8bf20-3976-4ed3-977c-e32d80a85ac5",
-        "Commond Na":"902fbad3-fe42-411c-8baf-9db972a20e0d",
-        "satang sasipen":"c43898bc-d7ec-48d6-bc47-b0bd217f7a49",
-        "Foremost":"5d6bc3be-0da0-4f1f-abdb-dbced66d19e6",
-        "Kanlaya Ruayphong":"d19efe04-3f87-4c0d-bacd-0cd32c3658e2",
-        "Thanchanok Tessakarn":"321c527f-f57a-4e7a-9428-3679d168f2ec",
-        "K Suthasinee":"ed6e0241-289a-449e-a269-d79e62b2eb0d",
-        "narongrith kesorn":"a887832a-97b5-45e5-affd-dad56b27aaa2",
-        "Nakarin Viyapron":"fb6ab337-1d37-4efc-8730-efbe2c602a9f",
-        "Mac.Rukpong R":"d05f8875-6d45-42c7-bac6-d474ae902bd3"
+        "Other": {
+            "Nakarin Viyapron": [
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "01/09/2022",
+                    "end_date": "01/09/2022",
+                    "total_work_hours": 0.75,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "Discuss about notion tools",
+                    "start_date": "08/09/2022",
+                    "end_date": "08/09/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "13/09/2022",
+                    "end_date": "13/09/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "15/09/2022",
+                    "end_date": "15/09/2022",
+                    "total_work_hours": 1.0,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "20/09/2022",
+                    "end_date": "20/09/2022",
+                    "total_work_hours": 0.75,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "22/09/2022",
+                    "end_date": "22/09/2022",
+                    "total_work_hours": 0.75,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "04/10/2022",
+                    "end_date": "04/10/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "06/10/2022",
+                    "end_date": "06/10/2022",
+                    "total_work_hours": 0.25,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "11/10/2022",
+                    "end_date": "11/10/2022",
+                    "total_work_hours": 1.0,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "18/10/2022",
+                    "end_date": "18/10/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "20/10/2022",
+                    "end_date": "20/10/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "25/10/2022",
+                    "end_date": "25/10/2022",
+                    "total_work_hours": 0.75,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "QA Standup Meeting",
+                    "start_date": "27/10/2022",
+                    "end_date": "27/10/2022",
+                    "total_work_hours": 0.75,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "Discuss with team about group keyword (while)",
+                    "start_date": "27/10/2022",
+                    "end_date": "27/10/2022",
+                    "total_work_hours": 0.5,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                },
+                {
+                    "title": "Discuss about environment testing and extension for Robotframework",
+                    "start_date": "31/10/2022",
+                    "end_date": "31/10/2022",
+                    "total_work_hours": 1.0,
+                    "status": "Done",
+                    "project": [
+                        "Other"
+                    ]
+                }
+            ]
+        }
     }
 }
