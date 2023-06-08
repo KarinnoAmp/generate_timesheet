@@ -18,8 +18,8 @@ class testReadExcelData(unittest.TestCase):
 
     def test_readFile_noFound(self):
         self.assertRaises(FileNotFoundError,
-                          self.generater.get_dict_data_from_jsonfile,
-                          self.file_invalid_path)
+                        self.generater.get_dict_data_from_jsonfile,
+                        self.file_invalid_path)
 
     def test_readFile_invalidExtFile(self):
         self.assertRaises(ValueError,
