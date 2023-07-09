@@ -1,14 +1,12 @@
-FROM debian:stable-slim
+FROM debian:bullseye-slim
 
-RUN apt update
-RUN apt install -y python3-pip nano curl wget openssh-server git
+WORKDIR /root
 
-ADD id_rsa /root/.ssh/id_rsa
-ADD id_rsa.pub /root/.ssh/id_rsa.pub
-RUN chmod 600 ~/.ssh/id_rsa
-RUN chmod 600 ~/.ssh/id_rsa.pub
+RUN apt-get update
+RUN apt-get install -y python3-pip
 
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+RUN rm requirements.txt
 
-CMD [ "bin/bash" ]
+CMD [ "/bin/bash" ]
